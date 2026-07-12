@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #071433;
+  --navy: #001f4d;
+  --royal: #005cff;
+  --sky: #16a8ff;
+  --mist: #eef7ff;
+  --steel: #526071;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-navy: var(--navy);
+  --color-royal: var(--royal);
+  --color-skybrand: var(--sky);
+  --color-mist: var(--mist);
+  --color-steel: var(--steel);
+  --font-sans: var(--font-inter);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.section-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.blue-grid {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(0, 92, 255, 0.18) 1px, transparent 0),
+    linear-gradient(135deg, rgba(22, 168, 255, 0.16), transparent 46%);
+  background-size: 22px 22px, 100% 100%;
+}
+
+.focus-ring {
+  outline: 3px solid rgba(0, 92, 255, 0.2);
+  outline-offset: 2px;
+}
