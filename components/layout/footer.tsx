@@ -36,7 +36,6 @@ export function Footer() {
           </h3>
           <div className="grid gap-2 text-sm text-blue-100">
             <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-            <a href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a>
             <span>{siteConfig.location}</span>
           </div>
         </div>

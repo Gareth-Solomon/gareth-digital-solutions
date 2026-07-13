@@ -3,7 +3,6 @@ export const siteConfig = {
   tagline: "Smart Solutions. Real Results.",
   offerName: "Missed Call Recovery System",
   email: "garethjustinsolomon@gmail.com",
-  phone: "0728791139",
   location: "Cape Town, South Africa",
   formspreeEndpoint:
     process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ?? "https://formspree.io/f/xkgpdabj",
