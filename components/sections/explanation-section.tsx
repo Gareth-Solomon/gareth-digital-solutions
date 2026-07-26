@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export function ExplanationSection() {
   return (
     <section className="border-y border-slate-200 bg-white py-20">
@@ -17,22 +15,41 @@ export function ExplanationSection() {
             missed call, reassures the customer, and helps you follow up.
           </p>
           <ul className="mt-6 grid gap-3 text-sm font-semibold text-navy">
-            <li>✓ Instant response to every missed caller</li>
-            <li>✓ Every missed enquiry is easier to track</li>
-            <li>✓ More opportunities turn into real conversations</li>
+            <li>Instant response to every missed caller</li>
+            <li>Every missed enquiry is easier to track</li>
+            <li>More opportunities turn into real conversations</li>
           </ul>
         </div>
-        <div className="overflow-hidden rounded-lg bg-[#061225] shadow-[0_24px_50px_rgba(7,20,51,0.18)]">
-          <div className="relative aspect-video">
-            <Image
-              src="/images/explainer-thumbnail.png"
-              alt="Missed Call Recovery System explainer video thumbnail"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-            <div className="absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-royal text-3xl text-white shadow-xl">
-              ▶
+
+        <div className="rounded-lg bg-[#061225] p-5 shadow-[0_24px_50px_rgba(7,20,51,0.18)]">
+          <div className="grid items-center gap-6 md:grid-cols-[0.72fr_1fr]">
+            <div className="mx-auto w-full max-w-[280px] overflow-hidden rounded-[1.5rem] border border-white/12 bg-black shadow-[0_22px_55px_rgba(0,0,0,0.32)]">
+              <video
+                src="/videos/gareth-digital-solutions.mp4"
+                controls
+                preload="metadata"
+                playsInline
+                className="aspect-[9/16] h-auto w-full bg-black object-cover"
+                aria-label="Gareth explaining the Missed Call Recovery System"
+              />
+            </div>
+            <div className="text-white">
+              <p className="text-sm font-black uppercase tracking-[0.14em] text-skybrand">
+                Watch the overview
+              </p>
+              <h3 className="mt-3 text-3xl font-black leading-tight">
+                A quick explanation from Gareth
+              </h3>
+              <p className="mt-4 text-sm leading-6 text-blue-100">
+                Learn why missed calls can quietly cost service businesses real revenue, and how a
+                simple automated response helps keep the opportunity alive.
+              </p>
+              <a
+                href="#estimator"
+                className="mt-6 inline-flex min-h-12 items-center justify-center rounded-md bg-royal px-5 text-sm font-bold text-white transition hover:bg-[#0048ce]"
+              >
+                Calculate Your Lost Revenue
+              </a>
             </div>
           </div>
         </div>
