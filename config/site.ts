@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Gareth Digital Solutions",
   tagline: "Smart Solutions. Real Results.",
   offerName: "Missed Call Recovery System",
-  email: "garethjustinsolomon@gmail.com",
+  email: "gareth@garethdigitalsolutions.com",
   location: "Cape Town, South Africa",
   formspreeEndpoint:
     process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ?? "https://formspree.io/f/xkgpdabj",
