@@ -37,7 +37,7 @@ Create `.env.local` from `.env.example` if you want to override the built-in V1 
 
 ```text
 NEXT_PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/xkgpdabj
-NEXT_PUBLIC_GOOGLE_CALENDAR_URL=https://calendar.app.google/NGGeP7pEw8xUpD8x7
+NEXT_PUBLIC_GOOGLE_CALENDAR_URL=https://calendar.app.google/aASiHtibd29MswdU8
 ```
 
 The current V1 also includes these values as safe public fallbacks in `config/site.ts`.

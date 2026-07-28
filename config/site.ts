@@ -8,5 +8,5 @@ export const siteConfig = {
     process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ?? "https://formspree.io/f/xkgpdabj",
   calendarUrl:
     process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_URL ??
-    "https://calendar.app.google/NGGeP7pEw8xUpD8x7"
+    "https://calendar.app.google/aASiHtibd29MswdU8"
 } as const;
