@@ -8,7 +8,7 @@ export function HeroSection() {
       <div className="section-shell relative grid min-h-[660px] items-center gap-12 py-16 lg:grid-cols-[1fr_0.95fr]">
         <div>
           <p className="mb-4 text-sm font-black uppercase tracking-[0.16em] text-royal">
-            {siteConfig.offerName}
+            INTRODUCING LEADREVIVA &mdash; MISSED CALL RECOVERY
           </p>
           <h1 className="max-w-3xl text-5xl font-black leading-[1.04] text-navy sm:text-6xl">
             Stop Losing Customers From <span className="text-royal">Missed Calls</span>
@@ -16,6 +16,9 @@ export function HeroSection() {
           <p className="mt-6 max-w-2xl text-lg leading-8 text-steel">
             Every missed call could be a customer ready to buy. Our system helps you respond
             quickly, capture enquiries, and follow up before they move on to the next business.
+          </p>
+          <p className="mt-4 text-sm font-bold text-royal">
+            LeadReviva by {siteConfig.name}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href="#estimator">Calculate Your Lost Revenue</ButtonLink>

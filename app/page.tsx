@@ -1,6 +1,7 @@
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { BenefitsSection } from "@/components/sections/benefits-section";
+import { ExistingNumberSection } from "@/components/sections/existing-number-section";
 import { ExplanationSection } from "@/components/sections/explanation-section";
 import { HeroSection } from "@/components/sections/hero-section";
 import { HowItWorksSection } from "@/components/sections/how-it-works-section";
@@ -14,6 +15,7 @@ export default function HomePage() {
         <HeroSection />
         <ExplanationSection />
         <HowItWorksSection />
+        <ExistingNumberSection />
         <MissedCallEstimator />
         <BenefitsSection />
       </main>
