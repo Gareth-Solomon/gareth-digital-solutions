@@ -25,7 +25,7 @@ export function ExplanationSection() {
           <div className="grid items-center gap-6 md:grid-cols-[0.72fr_1fr]">
             <div className="mx-auto w-full max-w-[280px] overflow-hidden rounded-[1.5rem] border border-white/12 bg-black shadow-[0_22px_55px_rgba(0,0,0,0.32)]">
               <iframe
-                src="https://www.youtube.com/embed/F1VZqFYNgWQ"
+                src="https://www.youtube.com/embed/CFcfSXFDd0A"
                 title="A quick explanation from Gareth"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
