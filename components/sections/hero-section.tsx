@@ -51,10 +51,10 @@ export function HeroSection() {
             Missed Call
           </div>
           <div className="absolute right-0 top-24 rounded-full bg-white px-4 py-3 text-sm font-bold text-navy shadow-xl">
-            Automatic SMS
+            Instant SMS
           </div>
-          <div className="absolute bottom-12 right-6 rounded-full bg-white px-4 py-3 text-sm font-bold text-navy shadow-xl">
-            You Follow Up
+          <div className="absolute bottom-0 right-6 rounded-full bg-white px-4 py-3 text-sm font-bold text-navy shadow-xl">
+            Customer Replies
           </div>
         </div>
       </div>
