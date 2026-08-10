@@ -24,13 +24,12 @@ export function ExplanationSection() {
         <div className="rounded-lg bg-[#061225] p-5 shadow-[0_24px_50px_rgba(7,20,51,0.18)]">
           <div className="grid items-center gap-6 md:grid-cols-[0.72fr_1fr]">
             <div className="mx-auto w-full max-w-[280px] overflow-hidden rounded-[1.5rem] border border-white/12 bg-black shadow-[0_22px_55px_rgba(0,0,0,0.32)]">
-              <video
-                src="/videos/gareth-digital-solutions.mp4"
-                controls
-                preload="metadata"
-                playsInline
+              <iframe
+                src="https://www.youtube.com/embed/F1VZqFYNgWQ"
+                title="A quick explanation from Gareth"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
                 className="aspect-[9/16] h-auto w-full bg-black object-cover"
-                aria-label="Gareth explaining the Missed Call Recovery System"
               />
             </div>
             <div className="text-white">
