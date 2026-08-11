@@ -70,6 +70,9 @@ export function Footer() {
           </h3>
           <div className="grid gap-2 text-sm text-blue-100">
             <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+            <a href={siteConfig.phoneHref} aria-label={`Call Gareth on ${siteConfig.phoneDisplay}`}>
+              Call Gareth: {siteConfig.phoneDisplay}
+            </a>
             <span>{siteConfig.location}</span>
           </div>
         </div>
