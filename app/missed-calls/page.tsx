@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   }
 };
 
-const reassuranceItems = ["Easy setup", "No contracts", "Cancel anytime"];
+const reassuranceItems = ["Easy setup", "No contracts", "Works with your existing number"];
 
 const painPoints = [
   {
