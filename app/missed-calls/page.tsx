@@ -155,13 +155,6 @@ function PhoneGraphic() {
       >
         You missed it...
       </div>
-      <div
-        data-hero-annotation
-        className="absolute right-8 top-28 z-10 rotate-[-6deg] rounded-full bg-white px-4 py-2 text-sm font-black text-royal shadow-xl lg:-right-4 lg:bottom-16 lg:top-auto"
-      >
-        Job Lost.
-      </div>
-
       <div className="absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full border border-skybrand/25 bg-skybrand/10" />
       <div className="absolute inset-x-8 bottom-28 h-24 rotate-[-10deg] rounded-full border-y-4 border-skybrand/35" />
 
