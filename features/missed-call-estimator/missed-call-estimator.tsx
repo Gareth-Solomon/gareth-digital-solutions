@@ -213,9 +213,9 @@ export function MissedCallsLandingEstimator({ children }: { children?: ReactNode
               estimator={estimator}
               className="mt-0 h-full min-w-0"
               layout="stacked"
-              eyebrow="Calculator enquiry"
-              heading="Get Your FREE Personalised Missed Call Report"
-              copy="Send us your details along with your calculator estimate and we'll help you understand what the missed-call opportunity could mean for your business."
+              eyebrow="PERSONALISED REPORT"
+              heading="Where should we send your personalised report?"
+              copy="Enter your details below and we'll email your personalised Missed Call Opportunity Report."
               buttonText="EMAIL MY PERSONALISED REPORT"
               privacyText="We respect your privacy. No spam."
             />

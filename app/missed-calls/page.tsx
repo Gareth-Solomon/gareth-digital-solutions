@@ -96,9 +96,6 @@ function LandingHeader() {
             className="h-14 w-auto rounded bg-white object-contain p-1"
           />
         </a>
-        <p className="text-right text-xs font-black uppercase tracking-[0.16em] text-skybrand sm:text-sm">
-          Built for Local Service Businesses
-        </p>
       </div>
     </header>
   );
@@ -145,7 +142,7 @@ function HeroSection() {
 
 function PhoneGraphic() {
   return (
-    <div className="relative mx-auto min-h-[620px] w-full max-w-[600px] overflow-hidden pt-44 sm:overflow-visible lg:min-h-[500px] lg:pt-0">
+    <div className="relative mx-auto min-h-[440px] w-full max-w-[600px] overflow-hidden pt-28 sm:min-h-[620px] sm:overflow-visible sm:pt-44 lg:min-h-[500px] lg:pt-0">
       <div
         data-hero-annotation
         className="absolute left-0 top-4 z-10 rotate-[-8deg] rounded-full bg-white px-4 py-2 text-sm font-black text-royal shadow-xl lg:-left-8 lg:top-12"
@@ -170,25 +167,27 @@ function PhoneGraphic() {
 
       <div
         data-hero-phone
-        className="relative z-20 mx-auto w-[245px] rotate-[7deg] rounded-[2.4rem] border-[10px] border-[#111827] bg-[#061225] p-4 shadow-[0_35px_80px_rgba(0,0,0,0.45)] sm:w-[280px]"
+        className="relative z-20 mx-auto w-[200px] rotate-[7deg] rounded-[2rem] border-[8px] border-[#111827] bg-[#061225] p-3 shadow-[0_35px_80px_rgba(0,0,0,0.45)] sm:w-[280px] sm:rounded-[2.4rem] sm:border-[10px] sm:p-4"
       >
-        <div className="mx-auto mb-8 h-5 w-24 rounded-b-2xl bg-black" />
+        <div className="mx-auto mb-5 h-4 w-20 rounded-b-2xl bg-black sm:mb-8 sm:h-5 sm:w-24" />
         <div className="text-center text-white">
-          <p className="text-sm font-black uppercase tracking-[0.14em] text-blue-200">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-blue-200 sm:text-sm">
             Incoming Call
           </p>
-          <p className="mt-4 text-2xl font-black leading-tight">Potential Customer</p>
+          <p className="mt-3 text-xl font-black leading-tight sm:mt-4 sm:text-2xl">
+            Potential Customer
+          </p>
           <p className="mt-2 text-sm text-blue-200">087 123 4567</p>
         </div>
-        <div className="mt-14 rounded-md border border-red-400/30 bg-red-500/10 p-4 text-center">
+        <div className="mt-8 rounded-md border border-red-400/30 bg-red-500/10 p-3 text-center sm:mt-14 sm:p-4">
           <p className="text-sm font-bold text-red-100">Missed opportunity</p>
-          <p className="mt-1 text-3xl font-black text-white">Job Lost</p>
+          <p className="mt-1 text-2xl font-black text-white sm:text-3xl">Job Lost</p>
         </div>
-        <div className="mt-10 flex justify-center gap-8">
-          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-red-500 text-2xl font-black text-white">
+        <div className="mt-7 flex justify-center gap-6 sm:mt-10 sm:gap-8">
+          <span className="flex h-11 w-11 items-center justify-center rounded-full bg-red-500 text-xl font-black text-white sm:h-14 sm:w-14 sm:text-2xl">
             x
           </span>
-          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-royal text-2xl font-black text-white">
+          <span className="flex h-11 w-11 items-center justify-center rounded-full bg-royal text-xl font-black text-white sm:h-14 sm:w-14 sm:text-2xl">
             +
           </span>
         </div>
