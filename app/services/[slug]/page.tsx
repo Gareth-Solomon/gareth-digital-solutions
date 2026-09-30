@@ -242,7 +242,7 @@ function GoogleAdsServicePage() {
               </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
-              {["Clicks", "Calls / Forms", "Leads"].map((item) => (
+              {["Search", "Click", "Call / Form", "Lead"].map((item) => (
                 <div
                   key={item}
                   className="rounded-lg bg-white p-6 text-center shadow-[0_18px_45px_rgba(7,20,51,0.08)]"
@@ -262,12 +262,12 @@ function GoogleAdsServicePage() {
                   Find Out Whether Google Ads Could Work for Your Business
                 </h2>
                 <p className="mt-3 max-w-2xl text-blue-100">
-                  We’ll look at what you sell, where you operate and what customers are searching
-                  for, then discuss whether Google Ads is worth testing.
+                  Estimate the potential numbers based on your business, location and customer
+                  value so you can see whether Google Ads may be worth testing.
                 </p>
                 <p className="mt-3 max-w-2xl text-sm font-semibold text-skybrand">
-                  No obligation — the goal is to first understand whether Google Ads makes sense
-                  for your business.
+                  No obligation — the goal is to help you understand the opportunity before you
+                  spend money.
                 </p>
               </div>
               <ButtonLink href="/free-tools/google-ads-roi-calculator" variant="light">
