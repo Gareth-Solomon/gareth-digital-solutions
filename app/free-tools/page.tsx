@@ -31,7 +31,7 @@ export default function FreeToolsPage() {
         </section>
 
         <section className="border-y border-slate-200 bg-mist py-16">
-          <div className="section-shell">
+          <div className="section-shell grid gap-6 lg:grid-cols-2">
             <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-[0_20px_55px_rgba(7,20,51,0.08)]">
               <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-royal">
                 Available now
@@ -42,6 +42,20 @@ export default function FreeToolsPage() {
                 personalised report.
               </p>
               <ButtonLink href="/missed-calls" className="mt-6">
+                Open Free Tool
+              </ButtonLink>
+            </div>
+            <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-[0_20px_55px_rgba(7,20,51,0.08)]">
+              <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-royal">
+                Available now
+              </p>
+              <h2 className="text-3xl font-black text-navy">
+                Google Ads Opportunity Calculator
+              </h2>
+              <p className="mt-4 max-w-2xl leading-7 text-steel">
+                Compare a monthly ad budget with the value of the jobs you want to generate.
+              </p>
+              <ButtonLink href="/free-tools/google-ads-calculator" className="mt-6">
                 Open Free Tool
               </ButtonLink>
             </div>

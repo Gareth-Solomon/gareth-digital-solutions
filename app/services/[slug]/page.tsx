@@ -168,7 +168,7 @@ function GoogleAdsServicePage() {
                 <ButtonLink href={siteConfig.calendarUrl} target="_blank">
                   Book a Free Google Ads Review
                 </ButtonLink>
-                <ButtonLink href="#what-we-track" variant="secondary">
+                <ButtonLink href="/free-tools/google-ads-calculator" variant="secondary">
                   Estimate Your Google Ads ROI
                 </ButtonLink>
               </div>
@@ -270,7 +270,7 @@ function GoogleAdsServicePage() {
                   spend money.
                 </p>
               </div>
-              <ButtonLink href="/free-tools/google-ads-roi-calculator" variant="light">
+              <ButtonLink href="/free-tools/google-ads-calculator" variant="light">
                 Estimate Your Google Ads ROI
               </ButtonLink>
             </div>
