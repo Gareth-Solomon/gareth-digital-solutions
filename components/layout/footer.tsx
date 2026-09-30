@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { siteConfig } from "@/config/site";
 
 export function Footer() {
@@ -74,10 +75,10 @@ export function Footer() {
             Quick Links
           </h3>
           <div className="grid gap-2 text-sm text-blue-100">
-            <a href="#home">Home</a>
-            <a href="#how-it-works">How It Works</a>
-            <a href="#estimator">Estimator</a>
-            <a href="#report-form">Personalised Report</a>
+            <Link href="/#home">Home</Link>
+            <Link href="/services">Services</Link>
+            <Link href="/free-tools">Free Tools</Link>
+            <Link href="/#contact">Contact</Link>
           </div>
         </div>
         <div>
