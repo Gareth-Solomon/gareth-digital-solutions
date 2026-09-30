@@ -44,7 +44,7 @@ export const serviceCategories: ServiceCategory[] = [
         intro: "A dedicated service page for websites and conversion improvements will be added here."
       },
       {
-        title: "Missed Call Recovery",
+        title: "Missed Call Recovery (LeadReviva)",
         href: "/services/missed-call-recovery",
         slug: "missed-call-recovery",
         intro: "A dedicated service page for missed call recovery will be added here."

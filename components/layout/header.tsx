@@ -31,9 +31,14 @@ export function Header() {
           <div className="group relative">
             <Link href="/services" className="inline-flex items-center gap-1 hover:text-royal">
               Services
-              <span aria-hidden="true" className="text-xs">
-                v
-              </span>
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 20 20"
+                className="h-3.5 w-3.5"
+                fill="currentColor"
+              >
+                <path d="M5.5 7.5 10 12l4.5-4.5H5.5Z" />
+              </svg>
             </Link>
             <div className="invisible absolute left-1/2 top-full w-[520px] -translate-x-1/2 pt-4 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
               <div className="grid gap-5 rounded-lg border border-slate-200 bg-white p-5 shadow-[0_22px_55px_rgba(7,20,51,0.14)] md:grid-cols-2">

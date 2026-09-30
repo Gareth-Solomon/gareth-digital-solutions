@@ -21,7 +21,7 @@ export function ButtonLink({
       "bg-royal text-white shadow-[0_14px_32px_rgba(0,92,255,0.28)] hover:bg-[#0048ce]",
     secondary:
       "border border-royal/35 bg-white text-navy hover:border-royal hover:bg-mist",
-    light: "bg-white text-navy hover:bg-mist"
+    light: "bg-white !text-navy hover:bg-mist"
   };
 
   return (
