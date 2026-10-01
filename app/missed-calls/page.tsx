@@ -109,7 +109,7 @@ function HeroSection() {
       <div className="section-shell relative grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center xl:gap-16">
         <div className="max-w-2xl">
           <p className="inline-flex rounded-full border border-skybrand/35 bg-white/5 px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-skybrand">
-            For local service businesses
+            FREE TOOL FOR LOCAL SERVICE BUSINESSES
           </p>
           <h1 className="mt-6 text-5xl font-black leading-[1.08] sm:text-6xl lg:text-7xl">
             Every Missed Call Could Be a <span className="text-royal">Job Lost.</span>

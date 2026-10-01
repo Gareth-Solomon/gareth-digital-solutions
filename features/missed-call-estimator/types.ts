@@ -15,6 +15,7 @@ export type EstimatorResults = {
 export type LeadFormValues = {
   name: string;
   businessName: string;
+  businessType: string;
   email: string;
   phone: string;
 };

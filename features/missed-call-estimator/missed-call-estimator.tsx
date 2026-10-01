@@ -20,6 +20,7 @@ const defaultInputs: EstimatorInputs = {
 const defaultLeadValues: LeadFormValues = {
   name: "",
   businessName: "",
+  businessType: "",
   email: "",
   phone: ""
 };
@@ -75,6 +76,7 @@ function useEstimatorState() {
     const payload = {
       Name: leadValues.name,
       BusinessName: leadValues.businessName,
+      BusinessType: leadValues.businessType || "Not provided",
       Email: leadValues.email,
       PhoneNumber: leadValues.phone || "Not provided",
       CallsPerDay: inputs.callsPerDay,
@@ -88,7 +90,9 @@ function useEstimatorState() {
       UTMSource: utmValues.source || "Not provided",
       UTMMedium: utmValues.medium || "Not provided",
       UTMCampaign: utmValues.campaign || "Not provided",
-      _subject: `Missed Call Opportunity Report - ${leadValues.businessName}`,
+      ActionPlanIncludes:
+        "Calculated missed-call results, what the numbers could mean, practical missed-call recovery steps, how LeadReviva could help, and a CTA to book the free 15-minute call.",
+      _subject: `Missed Call Action Plan - ${leadValues.businessName}`,
       _replyto: leadValues.email
     };
 
@@ -199,7 +203,11 @@ export function MissedCallsLandingEstimator({ children }: { children?: ReactNode
           </div>
 
           <div className="min-w-0 rounded-lg bg-white/5 p-3 shadow-[0_26px_70px_rgba(0,0,0,0.28)] ring-1 ring-skybrand/20 sm:p-5">
-            <EstimatorPanel estimator={estimator} onReportClick={handleReportClick} />
+            <EstimatorPanel
+              estimator={estimator}
+              onReportClick={handleReportClick}
+              reportButtonText="Get My Free Action Plan"
+            />
           </div>
         </div>
       </section>
@@ -213,11 +221,12 @@ export function MissedCallsLandingEstimator({ children }: { children?: ReactNode
               estimator={estimator}
               className="mt-0 h-full min-w-0"
               layout="stacked"
-              eyebrow="PERSONALISED REPORT"
-              heading="Where should we send your personalised report?"
-              copy="Enter your details below and we'll email your personalised Missed Call Opportunity Report."
-              buttonText="EMAIL MY PERSONALISED REPORT"
-              privacyText="We respect your privacy. No spam."
+              eyebrow="FREE ACTION PLAN"
+              heading="Want to Know What to Do About Your Missed Calls?"
+              copy="Get your free Missed Call Action Plan. We'll use your calculator results to show you the potential opportunity and practical next steps you can take to recover more enquiries."
+              buttonText="GET MY FREE MISSED CALL ACTION PLAN"
+              privacyText="Free. No obligation. We'll use your details to send your results and action plan."
+              includeBusinessType
             />
 
             <div className="flex items-center justify-center lg:px-1">
@@ -235,8 +244,8 @@ export function MissedCallsLandingEstimator({ children }: { children?: ReactNode
                   Want to See How LeadReviva Works?
                 </h3>
                 <p className="mt-4 leading-7 text-steel">
-                  Book a free 15-minute call and I&apos;ll show you how it could work for your
-                  business.
+                  Want to talk it through? Book a free 15-minute call and we&apos;ll look at how
+                  missed-call recovery could work for your business.
                 </p>
               </div>
               <a
@@ -262,10 +271,12 @@ type EstimatorState = ReturnType<typeof useEstimatorState>;
 
 function EstimatorPanel({
   estimator,
-  onReportClick
+  onReportClick,
+  reportButtonText = "Get My Personalised Report"
 }: {
   estimator: EstimatorState;
   onReportClick: () => void;
+  reportButtonText?: string;
 }) {
   return (
     <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
@@ -273,7 +284,11 @@ function EstimatorPanel({
         <EstimatorFields estimator={estimator} />
       </div>
 
-      <ResultsCard estimator={estimator} onReportClick={onReportClick} />
+      <ResultsCard
+        estimator={estimator}
+        onReportClick={onReportClick}
+        reportButtonText={reportButtonText}
+      />
     </div>
   );
 }
@@ -331,10 +346,12 @@ function EstimatorFields({ estimator }: { estimator: EstimatorState }) {
 
 function ResultsCard({
   estimator,
-  onReportClick
+  onReportClick,
+  reportButtonText
 }: {
   estimator: EstimatorState;
   onReportClick: () => void;
+  reportButtonText: string;
 }) {
   return (
     <div className="rounded-md bg-white p-6 shadow-xl">
@@ -393,7 +410,7 @@ function ResultsCard({
         disabled={estimator.missedCallsInvalid}
         className="mt-6 flex min-h-[52px] w-full items-center justify-center rounded-md bg-royal px-5 text-base font-black text-white shadow-[0_16px_36px_rgba(0,92,255,0.28)] transition hover:bg-[#0048ce] disabled:cursor-not-allowed disabled:bg-slate-400"
       >
-        Get My Personalised Report
+        {reportButtonText}
       </button>
     </div>
   );
@@ -407,7 +424,8 @@ function LeadFormPanel({
   heading = "Where should we send your personalised report?",
   copy = "Enter your details below and we'll email your personalised Missed Call Opportunity Report.",
   buttonText = "Send My Personalised Report",
-  privacyText = "We will only use your details to send your report and follow up about your missed call estimate."
+  privacyText = "We will only use your details to send your report and follow up about your missed call estimate.",
+  includeBusinessType = false
 }: {
   estimator: EstimatorState;
   className?: string;
@@ -417,6 +435,7 @@ function LeadFormPanel({
   copy?: string;
   buttonText?: string;
   privacyText?: string;
+  includeBusinessType?: boolean;
 }) {
   return (
     <div
@@ -452,6 +471,15 @@ function LeadFormPanel({
                 estimator.setLeadValues((current) => ({ ...current, businessName: value }))
               }
             />
+            {includeBusinessType ? (
+              <TextField
+                label="What type of business do you run?"
+                value={estimator.leadValues.businessType}
+                onChange={(value) =>
+                  estimator.setLeadValues((current) => ({ ...current, businessType: value }))
+                }
+              />
+            ) : null}
             <TextField
               label="Email Address"
               type="email"
