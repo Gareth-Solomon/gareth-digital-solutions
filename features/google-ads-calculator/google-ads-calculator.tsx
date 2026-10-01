@@ -92,8 +92,11 @@ export function GoogleAdsCalculator() {
             )} jobs`}
           />
           <ResultBlock
-            label="Jobs needed to cover the advertising spend"
-            value={`About ${formatJobs(results.jobsNeeded)} jobs would equal the advertising spend`}
+            label="Jobs equal to your monthly ad spend"
+            value={`About ${formatJobs(results.jobsNeeded)} average jobs = ${formatCurrency(
+              results.jobsNeeded * results.jobValue
+            )} in sales`}
+            note="This compares sales value with advertising spend. It does not include the costs of completing the jobs."
           />
           <ResultBlock
             label="Sales value above the advertising spend"
@@ -140,11 +143,12 @@ function NumberField({ label, value, onChange, prefix }: NumberFieldProps) {
   );
 }
 
-function ResultBlock({ label, value }: { label: string; value: string }) {
+function ResultBlock({ label, value, note }: { label: string; value: string; note?: string }) {
   return (
     <div className="rounded-md border border-white/12 bg-white/5 p-4">
       <p className="text-xs font-black uppercase tracking-[0.12em] text-skybrand">{label}</p>
       <p className="mt-2 text-xl font-black leading-tight">{value}</p>
+      {note ? <p className="mt-2 text-xs leading-5 text-blue-100">{note}</p> : null}
     </div>
   );
 }
