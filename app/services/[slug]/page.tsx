@@ -165,11 +165,8 @@ function GoogleAdsServicePage() {
                 generating real enquiries — not just clicks.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <ButtonLink href={siteConfig.calendarUrl} target="_blank">
-                  Book a Free Google Ads Review
-                </ButtonLink>
                 <ButtonLink href="/free-tools/google-ads-calculator" variant="secondary">
-                  Estimate Your Google Ads ROI
+                  See What Google Ads Could Be Worth
                 </ButtonLink>
               </div>
             </div>
@@ -271,7 +268,7 @@ function GoogleAdsServicePage() {
                 </p>
               </div>
               <ButtonLink href="/free-tools/google-ads-calculator" variant="light">
-                Estimate Your Google Ads ROI
+                See What Google Ads Could Be Worth
               </ButtonLink>
             </div>
           </div>
