@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: `${siteConfig.offerName} | ${siteConfig.name}`,
   description:
-    "Estimate missed-call revenue and request a personalised Missed Call Opportunity Report from Gareth Digital Solutions.",
+    "Estimate missed-call revenue and request a free Missed Call Action Plan from Gareth Digital Solutions.",
   metadataBase: new URL("https://gareth-digital-solutions.vercel.app"),
   openGraph: {
     title: `${siteConfig.offerName} | ${siteConfig.name}`,

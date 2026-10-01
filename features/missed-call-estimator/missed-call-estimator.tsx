@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useRef, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { siteConfig } from "@/config/site";
 import { formatCurrency, formatNumber } from "@/lib/format";
@@ -51,8 +51,32 @@ function getInitialUtmValues(): UtmValues {
   };
 }
 
+function getInitialEstimatorInputs(): EstimatorInputs {
+  if (typeof window === "undefined") {
+    return defaultInputs;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+
+  function readNumber(key: keyof EstimatorInputs) {
+    const value = Number(params.get(key));
+    return Number.isFinite(value) && value >= 0 ? value : defaultInputs[key];
+  }
+
+  const conversionPercentage = readNumber("conversionPercentage");
+
+  return {
+    callsPerDay: readNumber("callsPerDay"),
+    missedCallsPerDay: readNumber("missedCallsPerDay"),
+    averageCustomerValue: readNumber("averageCustomerValue"),
+    conversionPercentage: conversionOptions.includes(conversionPercentage)
+      ? conversionPercentage
+      : defaultInputs.conversionPercentage
+  };
+}
+
 function useEstimatorState() {
-  const [inputs, setInputs] = useState<EstimatorInputs>(defaultInputs);
+  const [inputs, setInputs] = useState<EstimatorInputs>(getInitialEstimatorInputs);
   const [leadValues, setLeadValues] = useState<LeadFormValues>(defaultLeadValues);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -115,7 +139,7 @@ function useEstimatorState() {
     } catch {
       setStatus("error");
       setErrorMessage(
-        "Something went wrong while sending the report request. Please try again or contact Gareth directly."
+        "Something went wrong while sending the action plan request. Please try again or contact Gareth directly."
       );
     }
   }
@@ -136,14 +160,16 @@ function useEstimatorState() {
 
 export function MissedCallEstimator() {
   const estimator = useEstimatorState();
-  const [showLeadForm, setShowLeadForm] = useState(false);
-  const leadFormRef = useRef<HTMLDivElement>(null);
 
   function handleReportClick() {
-    setShowLeadForm(true);
-    window.setTimeout(() => {
-      leadFormRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 80);
+    const params = new URLSearchParams({
+      callsPerDay: String(estimator.inputs.callsPerDay),
+      missedCallsPerDay: String(estimator.inputs.missedCallsPerDay),
+      averageCustomerValue: String(estimator.inputs.averageCustomerValue),
+      conversionPercentage: String(estimator.inputs.conversionPercentage)
+    });
+
+    window.location.href = `/missed-calls?${params.toString()}#report-form`;
   }
 
   return (
@@ -163,11 +189,11 @@ export function MissedCallEstimator() {
         </div>
 
         <div className="rounded-lg bg-[#002d78] p-4 shadow-[0_26px_70px_rgba(0,31,77,0.25)] sm:p-6">
-          <EstimatorPanel estimator={estimator} onReportClick={handleReportClick} />
-        </div>
-
-        <div id="report-form" ref={leadFormRef}>
-          {showLeadForm ? <LeadFormPanel estimator={estimator} /> : null}
+          <EstimatorPanel
+            estimator={estimator}
+            onReportClick={handleReportClick}
+            reportButtonText="Get My Free Action Plan"
+          />
         </div>
       </div>
     </section>
@@ -181,6 +207,14 @@ export function MissedCallsLandingEstimator({ children }: { children?: ReactNode
   function handleReportClick() {
     leadFormRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
+
+  useEffect(() => {
+    if (window.location.hash === "#report-form") {
+      window.setTimeout(() => {
+        leadFormRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 120);
+    }
+  }, []);
 
   return (
     <>
@@ -272,7 +306,7 @@ type EstimatorState = ReturnType<typeof useEstimatorState>;
 function EstimatorPanel({
   estimator,
   onReportClick,
-  reportButtonText = "Get My Personalised Report"
+  reportButtonText = "Get My Free Action Plan"
 }: {
   estimator: EstimatorState;
   onReportClick: () => void;
@@ -420,11 +454,11 @@ function LeadFormPanel({
   estimator,
   className = "mt-8",
   layout = "split",
-  eyebrow = "Personalised report",
-  heading = "Where should we send your personalised report?",
-  copy = "Enter your details below and we'll email your personalised Missed Call Opportunity Report.",
-  buttonText = "Send My Personalised Report",
-  privacyText = "We will only use your details to send your report and follow up about your missed call estimate.",
+  eyebrow = "Free action plan",
+  heading = "Where should we send your Missed Call Action Plan?",
+  copy = "Enter your details below and we'll email your Missed Call Action Plan.",
+  buttonText = "Send My Free Action Plan",
+  privacyText = "We will only use your details to send your action plan and follow up about your missed call estimate.",
   includeBusinessType = false
 }: {
   estimator: EstimatorState;
