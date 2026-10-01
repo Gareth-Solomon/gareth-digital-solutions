@@ -50,6 +50,50 @@ const googleAdsSteps = [
   }
 ];
 
+const missedCallSteps = [
+  {
+    title: "Missed Call",
+    copy: "A customer calls your business but you are unable to answer."
+  },
+  {
+    title: "Instant SMS",
+    copy: "LeadReviva automatically sends a professional response acknowledging the missed call."
+  },
+  {
+    title: "Customer Replies",
+    copy: "The customer can reply by SMS so the conversation can continue."
+  },
+  {
+    title: "Lead Logged & Tracked",
+    copy: "The missed call and conversation are recorded so the opportunity can be followed up."
+  }
+];
+
+const missedCallBenefits = [
+  {
+    title: "Respond Quickly",
+    copy: "Automatically acknowledge missed callers."
+  },
+  {
+    title: "Keep the Conversation Going",
+    copy: "Customers can reply by SMS and continue the conversation."
+  },
+  {
+    title: "Track Missed Opportunities",
+    copy: "Keep a record of missed calls and customer responses."
+  },
+  {
+    title: "See What You're Recovering",
+    copy: "Get better visibility into enquiries that may otherwise have been lost."
+  }
+];
+
+const existingNumberPoints = [
+  "Keep your existing number",
+  "Simple setup",
+  "No change for your customers"
+];
+
 export function generateStaticParams() {
   return services.map((service) => ({
     slug: service.slug
@@ -80,6 +124,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
   if (service.slug === "google-ads") {
     return <GoogleAdsServicePage />;
+  }
+
+  if (service.slug === "missed-call-recovery") {
+    return <MissedCallRecoveryServicePage />;
   }
 
   return (
@@ -131,6 +179,163 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 <p className="mt-3 max-w-2xl text-blue-100">
                   Book a free consultation and we can talk through whether this is the right next
                   step for your business.
+                </p>
+              </div>
+              <ButtonLink href={siteConfig.calendarUrl} target="_blank" variant="light">
+                Book a Free Consultation
+              </ButtonLink>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+function MissedCallRecoveryServicePage() {
+  return (
+    <>
+      <Header />
+      <main>
+        <section className="bg-white py-20">
+          <div className="section-shell">
+            <p className="mb-4 text-sm font-black uppercase tracking-[0.16em] text-royal">
+              MISSED CALL RECOVERY — LEADREVIVA
+            </p>
+            <h1 className="max-w-4xl text-5xl font-black leading-tight text-navy sm:text-6xl">
+              Turn Missed Calls Into Customer Conversations
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-steel">
+              LeadReviva automatically responds when your business misses a call, giving potential
+              customers an immediate way to continue the conversation instead of moving on to
+              another business.
+            </p>
+            <div className="mt-8">
+              <ButtonLink href="/missed-calls">Calculate Your Missed Call Opportunity</ButtonLink>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-y border-slate-200 bg-mist py-14">
+          <div className="section-shell rounded-lg bg-white p-6 shadow-[0_20px_55px_rgba(7,20,51,0.08)]">
+            <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-royal">
+              Why missed calls matter
+            </p>
+            <h2 className="text-3xl font-black text-navy">
+              A Missed Call Can Become a Missed Customer
+            </h2>
+            <p className="mt-4 max-w-3xl leading-7 text-steel">
+              When someone calls a local service business, they often need help now. If the call
+              goes unanswered, they may simply call the next business. LeadReviva helps you respond
+              quickly and keep that opportunity alive.
+            </p>
+          </div>
+        </section>
+
+        <section className="bg-white py-16">
+          <div className="section-shell">
+            <div className="text-center">
+              <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-royal">
+                How it works
+              </p>
+              <h2 className="text-4xl font-black text-navy">Simple missed-call recovery flow</h2>
+            </div>
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {missedCallSteps.map((step, index) => (
+                <article key={step.title} className="rounded-lg border border-royal/15 p-5">
+                  <p className="text-sm font-black text-royal">{index + 1}</p>
+                  <h3 className="mt-2 text-xl font-black text-navy">{step.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-steel">{step.copy}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-y border-slate-200 bg-mist py-16">
+          <div className="section-shell">
+            <div className="text-center">
+              <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-royal">
+                Benefits
+              </p>
+              <h2 className="text-4xl font-black text-navy">
+                What LeadReviva Helps You Do
+              </h2>
+            </div>
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {missedCallBenefits.map((benefit) => (
+                <article
+                  key={benefit.title}
+                  className="rounded-lg border border-slate-200 bg-white p-5 shadow-[0_18px_45px_rgba(7,20,51,0.08)]"
+                >
+                  <h3 className="text-xl font-black leading-tight text-navy">{benefit.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-steel">{benefit.copy}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white py-16">
+          <div className="section-shell rounded-lg bg-mist p-6">
+            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <div>
+                <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-royal">
+                  Simple setup
+                </p>
+                <h2 className="text-3xl font-black leading-tight text-navy">
+                  Keep Your Existing Business Number
+                </h2>
+              </div>
+              <div>
+                <p className="leading-7 text-steel">
+                  No new customer-facing number required. LeadReviva works with your existing
+                  business number using call forwarding, so customers continue calling the number
+                  they already know.
+                </p>
+                <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                  {existingNumberPoints.map((point) => (
+                    <div
+                      key={point}
+                      className="rounded-md border border-royal/15 bg-white px-4 py-3 text-sm font-bold text-navy"
+                    >
+                      {point}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-y border-slate-200 bg-mist py-16">
+          <div className="section-shell rounded-lg bg-white p-8 shadow-[0_20px_55px_rgba(7,20,51,0.08)]">
+            <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
+              <div>
+                <h2 className="text-3xl font-black text-navy">
+                  How Much Could Missed Calls Be Costing Your Business?
+                </h2>
+                <p className="mt-3 max-w-2xl leading-7 text-steel">
+                  Use our free calculator to estimate the potential value of the opportunities
+                  behind your missed calls.
+                </p>
+              </div>
+              <ButtonLink href="/missed-calls">Calculate Your Missed Call Opportunity</ButtonLink>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white py-16">
+          <div className="section-shell rounded-lg bg-[#001633] p-8 text-white">
+            <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
+              <div>
+                <h2 className="text-3xl font-black">
+                  Want to See Whether LeadReviva Could Work for Your Business?
+                </h2>
+                <p className="mt-3 max-w-2xl text-blue-100">
+                  We&apos;ll look at how your business currently handles missed calls and whether
+                  LeadReviva could help you recover more enquiries.
                 </p>
               </div>
               <ButtonLink href={siteConfig.calendarUrl} target="_blank" variant="light">
