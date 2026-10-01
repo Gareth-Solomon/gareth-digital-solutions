@@ -18,19 +18,20 @@ export const serviceCategories: ServiceCategory[] = [
         title: "Google Ads",
         href: "/services/google-ads",
         slug: "google-ads",
-        intro: "A dedicated service page for Google Ads will be added here."
+        intro: "Reach local customers who are actively searching for the services you provide."
       },
       {
         title: "Facebook Ads",
         href: "/services/facebook-ads",
         slug: "facebook-ads",
-        intro: "A dedicated service page for Facebook Ads will be added here."
+        intro:
+          "Get your business in front of potential local customers through targeted Facebook and Instagram advertising."
       },
       {
         title: "SEO & Local Search",
         href: "/services/seo-local-search",
         slug: "seo-local-search",
-        intro: "A dedicated service page for SEO and local search will be added here."
+        intro: "Improve your visibility when people search online for your services in your area."
       }
     ]
   },
@@ -41,19 +42,21 @@ export const serviceCategories: ServiceCategory[] = [
         title: "Websites & Conversion Improvements",
         href: "/services/websites-conversion",
         slug: "websites-conversion",
-        intro: "A dedicated service page for websites and conversion improvements will be added here."
+        intro: "Build or improve your website so more visitors turn into calls and enquiries."
       },
       {
         title: "Missed Call Recovery (LeadReviva)",
         href: "/services/missed-call-recovery",
         slug: "missed-call-recovery",
-        intro: "A dedicated service page for missed call recovery will be added here."
+        intro:
+          "Automatically respond to missed callers so potential customers don't disappear to a competitor."
       },
       {
         title: "AI Chatbots",
         href: "/services/ai-chatbots",
         slug: "ai-chatbots",
-        intro: "A dedicated service page for AI chatbots will be added here."
+        intro:
+          "Engage website visitors, answer common questions and help turn more visitors into enquiries."
       }
     ]
   }
