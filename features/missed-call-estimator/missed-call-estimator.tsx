@@ -33,6 +33,18 @@ type UtmValues = {
 
 type Status = "idle" | "submitting" | "success" | "error";
 
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
+function trackMetaLeadEvent() {
+  if (typeof window !== "undefined" && typeof window.fbq === "function") {
+    window.fbq("track", "Lead");
+  }
+}
+
 function getInitialUtmValues(): UtmValues {
   if (typeof window === "undefined") {
     return {
@@ -81,6 +93,7 @@ function useEstimatorState() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [utmValues] = useState<UtmValues>(getInitialUtmValues);
+  const isSubmittingRef = useRef(false);
 
   const results = useMemo(() => calculateMissedCallOpportunity(inputs), [inputs]);
   const missedCallsInvalid = inputs.missedCallsPerDay > inputs.callsPerDay;
@@ -94,6 +107,12 @@ function useEstimatorState() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    if (isSubmittingRef.current) {
+      return;
+    }
+
+    isSubmittingRef.current = true;
     setStatus("submitting");
     setErrorMessage("");
 
@@ -134,6 +153,7 @@ function useEstimatorState() {
         throw new Error("Formspree did not accept the submission.");
       }
 
+      trackMetaLeadEvent();
       setStatus("success");
       setLeadValues(defaultLeadValues);
     } catch {
@@ -141,6 +161,8 @@ function useEstimatorState() {
       setErrorMessage(
         "Something went wrong while sending the action plan request. Please try again or contact Gareth directly."
       );
+    } finally {
+      isSubmittingRef.current = false;
     }
   }
 
