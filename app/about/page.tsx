@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -95,8 +96,17 @@ export default function AboutPage() {
         </section>
 
         <section className="bg-white py-20">
-          <div className="section-shell">
-            <div className="max-w-4xl rounded-lg border border-slate-200 bg-white p-6 shadow-[0_20px_55px_rgba(7,20,51,0.08)] sm:p-8">
+          <div className="section-shell grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+            <div className="rounded-lg border border-slate-200 bg-mist p-4 shadow-[0_20px_55px_rgba(7,20,51,0.08)] sm:p-5">
+              <Image
+                src="/images/gareth-solomon-founder.jpg"
+                alt="Gareth Solomon, founder of Gareth Digital Solutions"
+                width={283}
+                height={257}
+                className="h-auto w-full rounded-md border border-slate-200 bg-white object-contain"
+              />
+            </div>
+            <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-[0_20px_55px_rgba(7,20,51,0.08)] sm:p-8">
               <p className="mb-3 text-sm font-black uppercase tracking-[0.16em] text-royal">
                 Founder
               </p>
@@ -164,7 +174,10 @@ export default function AboutPage() {
             </div>
             <figure className="mt-8 max-w-4xl rounded-lg border border-slate-200 bg-mist p-6 shadow-[0_20px_55px_rgba(7,20,51,0.08)] sm:p-8">
               <div className="flex flex-wrap items-center gap-3">
-                <div className="text-2xl font-black tracking-[0.08em] text-royal" aria-label="5 out of 5 stars">
+                <div
+                  className="text-2xl font-black tracking-[0.08em] text-[#F4B400]"
+                  aria-label="5 out of 5 stars"
+                >
                   ★★★★★
                 </div>
                 <span className="rounded-full bg-white px-3 py-1 text-xs font-black uppercase tracking-[0.12em] text-navy">
