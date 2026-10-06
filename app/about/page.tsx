@@ -32,6 +32,8 @@ const approachCards = [
   }
 ];
 
+const googleReviewUrl = "https://g.page/r/CTty0PNqUWvhEBM/review";
+
 export default function AboutPage() {
   return (
     <>
@@ -93,21 +95,8 @@ export default function AboutPage() {
         </section>
 
         <section className="bg-white py-20">
-          <div className="section-shell grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-            <div className="rounded-lg border border-slate-200 bg-mist p-6 shadow-[0_20px_55px_rgba(7,20,51,0.08)]">
-              <div className="flex aspect-[4/3] items-center justify-center rounded-md border border-dashed border-royal/30 bg-white p-8 text-center">
-                <div>
-                  <p className="text-sm font-black uppercase tracking-[0.14em] text-royal">
-                    Founder-led
-                  </p>
-                  <p className="mt-3 text-2xl font-black text-navy">Gareth Solomon</p>
-                  <p className="mt-3 text-sm leading-6 text-steel">
-                    Practical digital solutions for local service businesses.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div>
+          <div className="section-shell">
+            <div className="max-w-4xl rounded-lg border border-slate-200 bg-white p-6 shadow-[0_20px_55px_rgba(7,20,51,0.08)] sm:p-8">
               <p className="mb-3 text-sm font-black uppercase tracking-[0.16em] text-royal">
                 Founder
               </p>
@@ -163,7 +152,48 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Genuine Stephen testimonial not found in existing project content, so the trust section is intentionally omitted until exact review text is supplied. */}
+        <section className="bg-white py-16">
+          <div className="section-shell">
+            <div className="max-w-3xl">
+              <p className="mb-3 text-sm font-black uppercase tracking-[0.16em] text-royal">
+                Customer Review
+              </p>
+              <h2 className="text-4xl font-black leading-tight text-navy">
+                What It&apos;s Like Working With Gareth Digital Solutions
+              </h2>
+            </div>
+            <figure className="mt-8 max-w-4xl rounded-lg border border-slate-200 bg-mist p-6 shadow-[0_20px_55px_rgba(7,20,51,0.08)] sm:p-8">
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="text-2xl font-black tracking-[0.08em] text-royal" aria-label="5 out of 5 stars">
+                  ★★★★★
+                </div>
+                <span className="rounded-full bg-white px-3 py-1 text-xs font-black uppercase tracking-[0.12em] text-navy">
+                  Google Review
+                </span>
+              </div>
+              <blockquote className="mt-5 text-lg font-semibold leading-8 text-navy">
+                &quot;Thank to Gareth from Gareth Digital Solutions for his good knowledge. Helped
+                me set up a call retrieved system for my business for when I am not available to
+                answer calls and has helped me with other software issues aswell. Thank you for
+                your brilliant service 👏&quot;
+              </blockquote>
+              <figcaption className="mt-6 flex flex-col gap-4 border-t border-royal/15 pt-5 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-base font-black text-navy">Stephen De Villiers</p>
+                  <p className="mt-1 text-sm font-bold text-steel">Google Review</p>
+                </div>
+                <a
+                  href={googleReviewUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center justify-center rounded-md border border-royal/35 bg-white px-4 text-sm font-black text-navy transition hover:border-royal hover:bg-mist"
+                >
+                  Leave a Google Review
+                </a>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
 
         <section className="bg-white py-16">
           <div className="section-shell rounded-lg bg-[#001633] p-8 text-white">
