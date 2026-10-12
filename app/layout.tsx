@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Suspense } from "react";
 import "./globals.css";
+import { MetaPageViewTracker } from "@/components/tracking/meta-page-view-tracker";
 import { siteConfig } from "@/config/site";
 
 const metaPixelId = "1122109656924056";
@@ -44,7 +46,10 @@ export default function RootLayout({
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '${metaPixelId}');
-            fbq('track', 'PageView');
+            fbq('track', 'PageView', {
+              event_source_url: window.location.href,
+              page_path: window.location.pathname + window.location.search + window.location.hash
+            });
           `}
         </Script>
         <noscript>
@@ -57,6 +62,9 @@ export default function RootLayout({
             alt=""
           />
         </noscript>
+        <Suspense fallback={null}>
+          <MetaPageViewTracker />
+        </Suspense>
         {children}
       </body>
     </html>

@@ -306,25 +306,6 @@ function MissedCallRecoveryServicePage() {
           </div>
         </section>
 
-        <section className="border-y border-slate-200 bg-mist py-16">
-          <div className="section-shell rounded-lg bg-white p-8 shadow-[0_20px_55px_rgba(7,20,51,0.08)]">
-            <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
-              <div>
-                <h2 className="text-3xl font-black text-navy">
-                  How Much Could Missed Calls Be Costing Your Business?
-                </h2>
-                <p className="mt-3 max-w-2xl leading-7 text-steel">
-                  Use our free calculator to estimate the potential value of the opportunities
-                  behind your missed calls.
-                </p>
-              </div>
-              <ButtonLink href="/free-tools/missed-call-calculator">
-                Calculate Your Missed Call Opportunity
-              </ButtonLink>
-            </div>
-          </div>
-        </section>
-
         <section className="bg-white py-16">
           <div className="section-shell rounded-lg bg-[#001633] p-8 text-white">
             <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
