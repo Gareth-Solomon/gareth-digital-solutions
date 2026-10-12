@@ -1,5 +1,4 @@
 import { siteConfig } from "@/config/site";
-import { ButtonLink } from "@/components/ui/button-link";
 
 export function HeroSection() {
   return (
@@ -20,12 +19,6 @@ export function HeroSection() {
           <p className="mt-4 text-sm font-bold text-royal">
             LeadReviva by {siteConfig.name}
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="#estimator">Calculate Your Lost Revenue</ButtonLink>
-            <ButtonLink href={siteConfig.calendarUrl} target="_blank" variant="secondary">
-              Book a Free Consultation
-            </ButtonLink>
-          </div>
         </div>
         <div className="relative min-h-[420px]">
           <div className="absolute left-8 top-1/2 h-44 w-44 -translate-y-1/2 rounded-full border border-royal/20 bg-mist" />

@@ -211,9 +211,6 @@ function MissedCallRecoveryServicePage() {
               customers an immediate way to continue the conversation instead of moving on to
               another business.
             </p>
-            <div className="mt-8">
-              <ButtonLink href="/missed-calls">Calculate Your Missed Call Opportunity</ButtonLink>
-            </div>
           </div>
         </section>
 
@@ -321,7 +318,9 @@ function MissedCallRecoveryServicePage() {
                   behind your missed calls.
                 </p>
               </div>
-              <ButtonLink href="/missed-calls">Calculate Your Missed Call Opportunity</ButtonLink>
+              <ButtonLink href="/free-tools/missed-call-calculator">
+                Calculate Your Missed Call Opportunity
+              </ButtonLink>
             </div>
           </div>
         </section>
@@ -338,8 +337,8 @@ function MissedCallRecoveryServicePage() {
                   LeadReviva could help you recover more enquiries.
                 </p>
               </div>
-              <ButtonLink href={siteConfig.calendarUrl} target="_blank" variant="light">
-                Book a Free Consultation
+              <ButtonLink href="/missed-calls#demo-form" variant="light">
+                Get a Free Demo
               </ButtonLink>
             </div>
           </div>

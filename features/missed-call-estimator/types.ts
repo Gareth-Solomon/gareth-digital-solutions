@@ -11,11 +11,3 @@ export type EstimatorResults = {
   monthlyOpportunity: number;
   annualOpportunity: number;
 };
-
-export type LeadFormValues = {
-  name: string;
-  businessName: string;
-  businessType: string;
-  email: string;
-  phone: string;
-};

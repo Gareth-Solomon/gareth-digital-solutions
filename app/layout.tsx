@@ -8,7 +8,7 @@ const metaPixelId = "1122109656924056";
 export const metadata: Metadata = {
   title: `${siteConfig.offerName} | ${siteConfig.name}`,
   description:
-    "Estimate missed-call revenue and request a free Missed Call Action Plan from Gareth Digital Solutions.",
+    "Estimate missed-call revenue and request a free missed-call recovery demo from Gareth Digital Solutions.",
   metadataBase: new URL("https://gareth-digital-solutions.vercel.app"),
   openGraph: {
     title: `${siteConfig.offerName} | ${siteConfig.name}`,

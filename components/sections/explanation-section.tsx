@@ -43,12 +43,6 @@ export function ExplanationSection() {
                 Learn why missed calls can quietly cost service businesses real revenue, and how a
                 simple automated response helps keep the opportunity alive.
               </p>
-              <a
-                href="#estimator"
-                className="mt-6 inline-flex min-h-12 items-center justify-center rounded-md bg-royal px-5 text-sm font-bold text-white transition hover:bg-[#0048ce]"
-              >
-                Calculate Your Lost Revenue
-              </a>
             </div>
           </div>
         </div>

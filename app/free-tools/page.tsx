@@ -41,7 +41,7 @@ export default function FreeToolsPage() {
                 Estimate the potential value of the opportunities behind your missed business
                 calls.
               </p>
-              <ButtonLink href="/missed-calls" className="mt-6">
+              <ButtonLink href="/free-tools/missed-call-calculator" className="mt-6">
                 Open Free Calculator
               </ButtonLink>
             </div>
