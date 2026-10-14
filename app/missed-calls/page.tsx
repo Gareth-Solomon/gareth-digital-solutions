@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { DemoRequestForm } from "@/features/missed-call-demo/demo-request-form";
 import { siteConfig } from "@/config/site";
+import { getLeadRevivaSelection, type LeadRevivaSelection } from "@/features/leadreviva/pricing";
 
 export const metadata: Metadata = {
   title: `Missed Call Recovery Demo | ${siteConfig.name}`,
@@ -44,7 +45,13 @@ const benefits = [
   "No long-term contracts."
 ];
 
-export default function MissedCallsPage() {
+export default async function MissedCallsPage({
+  searchParams
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const params = await searchParams;
+  const selection = getLeadRevivaSelection(params.plan, params.sms);
   return (
     <>
       <Header />
@@ -52,7 +59,7 @@ export default function MissedCallsPage() {
         <HeroSection />
         <StepsSection />
         <BenefitsSection />
-        <DemoSection />
+        <DemoSection selection={selection} />
       </main>
       <Footer />
     </>
@@ -205,7 +212,7 @@ function BenefitsSection() {
   );
 }
 
-function DemoSection() {
+function DemoSection({ selection }: { selection?: LeadRevivaSelection }) {
   return (
     <section id="demo-form" className="scroll-mt-24 bg-white py-16 sm:scroll-mt-28 sm:py-20">
       <div className="section-shell">
@@ -224,7 +231,7 @@ function DemoSection() {
             </p>
           </div>
           <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-[0_20px_55px_rgba(7,20,51,0.1)] sm:p-8">
-            <DemoRequestForm />
+            <DemoRequestForm selection={selection} />
           </div>
         </div>
       </div>

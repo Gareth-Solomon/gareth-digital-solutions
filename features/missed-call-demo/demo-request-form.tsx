@@ -3,6 +3,7 @@
 import { FormEvent, useRef, useState } from "react";
 import { siteConfig } from "@/config/site";
 import { trackMetaLeadEvent } from "@/lib/meta-pixel";
+import { formatMonthlyPrice, leadRevivaPlans, type LeadRevivaSelection } from "@/features/leadreviva/pricing";
 
 type DemoFormValues = {
   name: string;
@@ -40,7 +41,9 @@ function getUtmValues() {
   };
 }
 
-export function DemoRequestForm() {
+export function DemoRequestForm({ selection }: { selection?: LeadRevivaSelection }) {
+  const selectedPlan = selection ? leadRevivaPlans[selection.plan] : undefined;
+  const selectedPrice = selection && selectedPlan ? selectedPlan.prices[selection.allowance] : undefined;
   const [values, setValues] = useState<DemoFormValues>(defaultValues);
   const [status, setStatus] = useState<DemoFormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -72,6 +75,11 @@ export function DemoRequestForm() {
       Email: values.email,
       PhoneNumber: values.phone,
       BusinessType: values.businessType || "Not provided",
+      ...(selection && selectedPlan && selectedPrice !== undefined ? {
+        LeadRevivaPackage: selectedPlan.name,
+        MonthlySmsAllowance: selection.allowance,
+        MonthlyPrice: formatMonthlyPrice(selectedPrice)
+      } : {}),
       UTMSource: utmValues.current.source || "Not provided",
       UTMMedium: utmValues.current.medium || "Not provided",
       UTMCampaign: utmValues.current.campaign || "Not provided",
@@ -108,6 +116,13 @@ export function DemoRequestForm() {
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-4" aria-label="Free demo request form">
+      {selection && selectedPlan && selectedPrice !== undefined ? (
+        <div className="rounded-md border border-royal/20 bg-mist p-4 text-sm text-navy">
+          <p className="font-black">Your selected LeadReviva package</p>
+          <p className="mt-1">{selectedPlan.name} · {selection.allowance} SMS · {formatMonthlyPrice(selectedPrice)}</p>
+          <p className="mt-2 text-steel">This selection will be included with your enquiry.</p>
+        </div>
+      ) : null}
       <div className="grid gap-4 sm:grid-cols-2">
         <TextField
           label="Name"

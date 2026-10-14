@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/header";
 import { ButtonLink } from "@/components/ui/button-link";
 import { getServiceBySlug, services } from "@/config/services";
 import { siteConfig } from "@/config/site";
+import { LeadRevivaPricingSection } from "@/features/leadreviva/pricing-section";
 
 type ServicePageProps = {
   params: Promise<{
@@ -60,12 +61,12 @@ const missedCallSteps = [
     copy: "LeadReviva automatically sends a professional response acknowledging the missed call."
   },
   {
-    title: "Customer Replies",
-    copy: "The customer can reply by SMS so the conversation can continue."
+    title: "Optional Reply Forwarding (Plus)",
+    copy: "With Plus, customers can reply to the recovery SMS and their enquiries are automatically forwarded to your phone."
   },
   {
     title: "Lead Logged & Tracked",
-    copy: "The missed call and conversation are recorded so the opportunity can be followed up."
+    copy: "The missed call is logged so you can follow up on the opportunity."
   }
 ];
 
@@ -76,11 +77,11 @@ const missedCallBenefits = [
   },
   {
     title: "Keep the Conversation Going",
-    copy: "Customers can reply by SMS and continue the conversation."
+    copy: "With Plus, customers can reply by SMS and their enquiries are forwarded to your phone."
   },
   {
     title: "Track Missed Opportunities",
-    copy: "Keep a record of missed calls and customer responses."
+    copy: "Keep a record of missed calls for follow-up."
   },
   {
     title: "See What You're Recovering",
@@ -305,6 +306,8 @@ function MissedCallRecoveryServicePage() {
             </div>
           </div>
         </section>
+
+        <LeadRevivaPricingSection />
 
         <section className="bg-white py-16">
           <div className="section-shell rounded-lg bg-[#001633] p-8 text-white">
