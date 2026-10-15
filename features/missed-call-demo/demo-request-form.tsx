@@ -1,55 +1,32 @@
 "use client";
 
-import { FormEvent, useRef, useState } from "react";
-import { siteConfig } from "@/config/site";
-import { trackMetaLeadEvent } from "@/lib/meta-pixel";
+import { useState } from "react";
+import { TextField } from "@/components/ui/text-field";
+import { useEnquirySubmission } from "@/features/enquiries/use-enquiry-submission";
 import { formatMonthlyPrice, leadRevivaPlans, type LeadRevivaSelection } from "@/features/leadreviva/pricing";
 
 type DemoFormValues = {
   name: string;
   businessName: string;
+  businessArea: string;
   email: string;
   phone: string;
   businessType: string;
 };
 
-type DemoFormStatus = "idle" | "submitting" | "success" | "error";
-
 const defaultValues: DemoFormValues = {
   name: "",
   businessName: "",
+  businessArea: "",
   email: "",
   phone: "",
   businessType: ""
 };
 
-function getUtmValues() {
-  if (typeof window === "undefined") {
-    return {
-      source: "",
-      medium: "",
-      campaign: ""
-    };
-  }
-
-  const params = new URLSearchParams(window.location.search);
-
-  return {
-    source: params.get("utm_source") ?? "",
-    medium: params.get("utm_medium") ?? "",
-    campaign: params.get("utm_campaign") ?? ""
-  };
-}
-
 export function DemoRequestForm({ selection }: { selection?: LeadRevivaSelection }) {
   const selectedPlan = selection ? leadRevivaPlans[selection.plan] : undefined;
   const selectedPrice = selection && selectedPlan ? selectedPlan.prices[selection.allowance] : undefined;
   const [values, setValues] = useState<DemoFormValues>(defaultValues);
-  const [status, setStatus] = useState<DemoFormStatus>("idle");
-  const [errorMessage, setErrorMessage] = useState("");
-  const isSubmittingRef = useRef(false);
-  const utmValues = useRef(getUtmValues());
-
   function updateValue(field: keyof DemoFormValues, value: string) {
     setValues((current) => ({
       ...current,
@@ -57,62 +34,28 @@ export function DemoRequestForm({ selection }: { selection?: LeadRevivaSelection
     }));
   }
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  const payload = {
+    LeadSource: "missed_call_demo",
+    Name: values.name,
+    BusinessName: values.businessName,
+    BusinessArea: values.businessArea || "Not provided",
+    Email: values.email,
+    PhoneNumber: values.phone,
+    BusinessType: values.businessType || "Not provided",
+    ...(selection && selectedPlan && selectedPrice !== undefined ? {
+      LeadRevivaPackage: selectedPlan.name,
+      MonthlySmsAllowance: selection.allowance,
+      MonthlyPrice: formatMonthlyPrice(selectedPrice)
+    } : {}),
+    _subject: `Missed Call Recovery Demo Request - ${values.businessName}`,
+    _replyto: values.email
+  };
 
-    if (isSubmittingRef.current) {
-      return;
-    }
-
-    isSubmittingRef.current = true;
-    setStatus("submitting");
-    setErrorMessage("");
-
-    const payload = {
-      LeadSource: "missed_call_demo",
-      Name: values.name,
-      BusinessName: values.businessName,
-      Email: values.email,
-      PhoneNumber: values.phone,
-      BusinessType: values.businessType || "Not provided",
-      ...(selection && selectedPlan && selectedPrice !== undefined ? {
-        LeadRevivaPackage: selectedPlan.name,
-        MonthlySmsAllowance: selection.allowance,
-        MonthlyPrice: formatMonthlyPrice(selectedPrice)
-      } : {}),
-      UTMSource: utmValues.current.source || "Not provided",
-      UTMMedium: utmValues.current.medium || "Not provided",
-      UTMCampaign: utmValues.current.campaign || "Not provided",
-      _subject: `Missed Call Recovery Demo Request - ${values.businessName}`,
-      _replyto: values.email
-    };
-
-    try {
-      const response = await fetch(siteConfig.formspreeEndpoint, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-      });
-
-      if (!response.ok) {
-        throw new Error("Formspree did not accept the submission.");
-      }
-
-      trackMetaLeadEvent();
-      setStatus("success");
-      setValues(defaultValues);
-    } catch {
-      setStatus("error");
-      setErrorMessage(
-        "Something went wrong while sending your demo request. Please try again or contact Gareth directly."
-      );
-    } finally {
-      isSubmittingRef.current = false;
-    }
-  }
+  const { status, errorMessage, handleSubmit } = useEnquirySubmission({
+    payload,
+    onSuccess: () => setValues(defaultValues),
+    errorMessage: "Something went wrong while sending your demo request. Please try again or contact Gareth directly."
+  });
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-4" aria-label="Free demo request form">
@@ -136,6 +79,14 @@ export function DemoRequestForm({ selection }: { selection?: LeadRevivaSelection
           required
           onChange={(value) => updateValue("businessName", value)}
         />
+        <div className="sm:col-span-2">
+          <TextField
+            label="Business Area"
+            placeholder="e.g. Durbanville, Cape Town"
+            value={values.businessArea}
+            onChange={(value) => updateValue("businessArea", value)}
+          />
+        </div>
         <TextField
           label="Email address"
           type="email"
@@ -183,28 +134,5 @@ export function DemoRequestForm({ selection }: { selection?: LeadRevivaSelection
         Free demo. No obligation. Your details will only be used to respond to your enquiry.
       </p>
     </form>
-  );
-}
-
-type TextFieldProps = {
-  label: string;
-  value: string;
-  onChange: (value: string) => void;
-  type?: string;
-  required?: boolean;
-};
-
-function TextField({ label, value, onChange, type = "text", required = false }: TextFieldProps) {
-  return (
-    <label className="grid min-w-0 gap-2 text-sm font-bold text-navy">
-      {label}
-      <input
-        type={type}
-        value={value}
-        required={required}
-        onChange={(event) => onChange(event.target.value)}
-        className="min-h-12 w-full min-w-0 rounded-md border border-slate-300 bg-white px-3 text-base focus:border-royal focus:outline-none focus:ring-4 focus:ring-royal/15"
-      />
-    </label>
   );
 }

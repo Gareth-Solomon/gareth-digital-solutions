@@ -1,6 +1,6 @@
 export function ExplanationSection() {
   return (
-    <section className="border-y border-slate-200 bg-white py-20">
+    <section className="border-y border-slate-200 bg-mist py-20">
       <div className="section-shell grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr]">
         <div>
           <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-royal">

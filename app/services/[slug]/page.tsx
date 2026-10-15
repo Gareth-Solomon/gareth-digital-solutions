@@ -6,6 +6,7 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { getServiceBySlug, services } from "@/config/services";
 import { siteConfig } from "@/config/site";
 import { LeadRevivaPricingSection } from "@/features/leadreviva/pricing-section";
+import { FacebookAdsServicePage } from "@/features/facebook-ads/facebook-ads-service-page";
 
 type ServicePageProps = {
   params: Promise<{
@@ -111,7 +112,9 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 
   return {
     title: `${service.title} | ${siteConfig.name}`,
-    description: `${service.title} service page for Gareth Digital Solutions.`
+    description: service.slug === "facebook-ads"
+      ? "Reach potential customers in your service area with Facebook and Instagram advertising. Explore campaign setup, targeting, creative and lead tracking."
+      : `${service.title} service page for Gareth Digital Solutions.`
   };
 }
 
@@ -125,6 +128,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
   if (service.slug === "google-ads") {
     return <GoogleAdsServicePage />;
+  }
+
+  if (service.slug === "facebook-ads") {
+    return <FacebookAdsServicePage />;
   }
 
   if (service.slug === "missed-call-recovery") {

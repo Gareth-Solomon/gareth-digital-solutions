@@ -19,7 +19,7 @@ const processSteps = [
   "Convert the Lead"
 ];
 
-const linkedServiceSlugs = new Set(["google-ads", "missed-call-recovery"]);
+const linkedServiceSlugs = new Set(["google-ads", "facebook-ads", "missed-call-recovery"]);
 
 export default function ServicesPage() {
   return (

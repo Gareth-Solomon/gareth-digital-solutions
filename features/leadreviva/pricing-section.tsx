@@ -14,8 +14,8 @@ export function LeadRevivaPricingSection() {
   const [allowance, setAllowance] = useState<SmsAllowance>(100);
 
   return (
-    <section aria-labelledby="leadreviva-pricing-heading" className="bg-white py-8 sm:py-12">
-      <div className="section-shell rounded-lg border border-slate-200 bg-mist p-4 sm:p-8">
+    <section aria-labelledby="leadreviva-pricing-heading" className="border-y border-slate-200 bg-mist py-16">
+      <div className="section-shell">
         <div className="text-center">
           <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-royal">
             LeadReviva Pricing
