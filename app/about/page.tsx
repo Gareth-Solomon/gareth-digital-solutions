@@ -95,7 +95,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="bg-white py-20">
+        <section className="bg-white py-16">
           <div className="section-shell grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
             <div className="rounded-lg border border-slate-200 bg-mist p-4 shadow-[0_20px_55px_rgba(7,20,51,0.08)] sm:p-5">
               <Image
@@ -208,7 +208,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="bg-white py-16">
+        <section className="border-y border-slate-200 bg-mist py-16">
           <div className="section-shell rounded-lg bg-[#001633] p-8 text-white">
             <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
               <div>
