@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { TextField } from "@/components/ui/text-field";
 import { useEnquirySubmission } from "@/features/enquiries/use-enquiry-submission";
-import { formatMonthlyPrice, leadRevivaPlans, type LeadRevivaSelection } from "@/features/leadreviva/pricing";
+import { formatMonthlyPrice, getLeadRevivaPrice, leadRevivaPlans, type LeadRevivaSelection } from "@/features/leadreviva/pricing";
 
 type DemoFormValues = {
   name: string;
@@ -12,6 +12,8 @@ type DemoFormValues = {
   email: string;
   phone: string;
   businessType: string;
+  missedCallsPerDay: string;
+  nextStep: string;
 };
 
 const defaultValues: DemoFormValues = {
@@ -20,12 +22,27 @@ const defaultValues: DemoFormValues = {
   businessArea: "",
   email: "",
   phone: "",
-  businessType: ""
+  businessType: "",
+  missedCallsPerDay: "",
+  nextStep: ""
 };
+
+const qualificationQuestions = [
+  {
+    field: "missedCallsPerDay",
+    label: "Approximately how many customer calls does your business miss per day?",
+    options: ["0–2", "3–5", "6–10", "11–20", "More than 20", "Not sure"]
+  },
+  {
+    field: "nextStep",
+    label: "What would you like to do next?",
+    options: ["I'm interested in getting started", "I'd like to see a demonstration", "I'm just exploring"]
+  }
+] as const;
 
 export function DemoRequestForm({ selection }: { selection?: LeadRevivaSelection }) {
   const selectedPlan = selection ? leadRevivaPlans[selection.plan] : undefined;
-  const selectedPrice = selection && selectedPlan ? selectedPlan.prices[selection.allowance] : undefined;
+  const selectedPrice = selection ? getLeadRevivaPrice(selection) : undefined;
   const [values, setValues] = useState<DemoFormValues>(defaultValues);
   function updateValue(field: keyof DemoFormValues, value: string) {
     setValues((current) => ({
@@ -42,8 +59,11 @@ export function DemoRequestForm({ selection }: { selection?: LeadRevivaSelection
     Email: values.email,
     PhoneNumber: values.phone,
     BusinessType: values.businessType || "Not provided",
+    MissedCallsPerDay: values.missedCallsPerDay,
+    NextStep: values.nextStep,
     ...(selection && selectedPlan && selectedPrice !== undefined ? {
       LeadRevivaPackage: selectedPlan.name,
+      SelectedPackage: `${selectedPlan.name} ${selection.allowance}`,
       MonthlySmsAllowance: selection.allowance,
       MonthlyPrice: formatMonthlyPrice(selectedPrice)
     } : {}),
@@ -110,6 +130,26 @@ export function DemoRequestForm({ selection }: { selection?: LeadRevivaSelection
         </div>
       </div>
 
+      <div className="grid gap-4 border-t border-slate-200 pt-4">
+        {qualificationQuestions.map((question) => (
+          <label key={question.field} className="grid min-w-0 gap-2 text-sm font-bold text-navy">
+            {question.label}
+            <select
+              value={values[question.field]}
+              required
+              onChange={(event) => updateValue(question.field, event.target.value)}
+              className="min-h-12 w-full min-w-0 rounded-md border border-slate-300 bg-white px-3 text-base focus:border-royal focus:outline-none focus:ring-4 focus:ring-royal/15"
+            >
+              <option value="" disabled>Select an option</option>
+              {question.options.map((option) => <option key={option} value={option}>{option}</option>)}
+            </select>
+          </label>
+        ))}
+      </div>
+
+      <p className="text-center text-sm font-bold text-navy">
+        Plans from R399/month. No long-term contracts.
+      </p>
       <button
         type="submit"
         disabled={status === "submitting"}

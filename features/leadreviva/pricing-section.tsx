@@ -2,7 +2,15 @@
 
 import { useState } from "react";
 import { ButtonLink } from "@/components/ui/button-link";
-import { leadRevivaPlans, type LeadRevivaPlan, type SmsAllowance } from "./pricing";
+import {
+  basicSmsAllowances,
+  plusSmsAllowances,
+  getLeadRevivaPrice,
+  leadRevivaPlans,
+  type LeadRevivaSelection,
+  type PlusSmsAllowance,
+  type SmsAllowance
+} from "./pricing";
 
 const sharedFeatures = [
   "Automatic SMS after a missed call",
@@ -11,7 +19,12 @@ const sharedFeatures = [
 ];
 
 export function LeadRevivaPricingSection() {
-  const [allowance, setAllowance] = useState<SmsAllowance>(100);
+  const [basicAllowance, setBasicAllowance] = useState<SmsAllowance>(25);
+  const [plusAllowance, setPlusAllowance] = useState<PlusSmsAllowance>(100);
+  const selections: LeadRevivaSelection[] = [
+    { plan: "basic", allowance: basicAllowance },
+    { plan: "plus", allowance: plusAllowance }
+  ];
 
   return (
     <section aria-labelledby="leadreviva-pricing-heading" className="border-y border-slate-200 bg-mist py-16">
@@ -26,24 +39,14 @@ export function LeadRevivaPricingSection() {
           <p className="mt-4 leading-7 text-steel">
             Choose the plan and monthly SMS allowance that suits your business.
           </p>
-          <div role="group" aria-label="Monthly SMS allowance" className="mt-6 inline-flex rounded-full border border-royal/15 bg-white p-1">
-            {([100, 150] as const).map((sms) => (
-              <button
-                key={sms}
-                type="button"
-                aria-pressed={allowance === sms}
-                onClick={() => setAllowance(sms)}
-                className={`min-h-11 cursor-pointer rounded-full px-6 text-sm font-bold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-royal ${allowance === sms ? "bg-royal text-white shadow-sm" : "text-steel hover:bg-mist"}`}
-              >
-                {sms} SMS
-              </button>
-            ))}
-          </div>
         </div>
 
         <div aria-live="polite" aria-atomic="true" className="mt-6 grid gap-5 md:grid-cols-2">
-          {(["basic", "plus"] as LeadRevivaPlan[]).map((plan) => {
-            const { name, prices } = leadRevivaPlans[plan];
+          {selections.map((selection) => {
+            const { plan, allowance } = selection;
+            const { name } = leadRevivaPlans[plan];
+            const price = getLeadRevivaPrice(selection);
+            const allowances = plan === "basic" ? basicSmsAllowances : plusSmsAllowances;
             const features = [
               `${allowance} recovery SMS segments`,
               ...(plan === "plus" ? [`${allowance} inbound SMS segments`, `${allowance} forwarded SMS segments`] : []),
@@ -58,8 +61,24 @@ export function LeadRevivaPricingSection() {
                     ? "Let customers reply and receive their enquiries directly on your phone."
                     : "Automatically respond when you miss a call."}
                 </p>
+                <div role="group" aria-label={`${name} monthly SMS allowance`} className="mt-5 flex w-full max-w-md rounded-full border border-royal/15 bg-white p-1">
+                  {allowances.map((sms) => (
+                    <button
+                      key={sms}
+                      type="button"
+                      aria-pressed={allowance === sms}
+                      onClick={() => {
+                        if (plan === "basic") setBasicAllowance(sms);
+                        else if (sms === 100 || sms === 150) setPlusAllowance(sms);
+                      }}
+                      className={`min-h-11 min-w-0 flex-1 cursor-pointer rounded-full px-1 !text-xs font-bold whitespace-nowrap transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-royal sm:px-3 sm:!text-sm ${allowance === sms ? "bg-royal text-white shadow-sm" : "text-steel hover:bg-mist"}`}
+                    >
+                      {sms} SMS
+                    </button>
+                  ))}
+                </div>
                 <p className="mt-3 text-4xl font-black tracking-tight text-navy sm:text-5xl">
-                  R{prices[allowance].toLocaleString("en-US")}
+                  R{price.toLocaleString("en-US")}
                 </p>
                 <p className="mt-2 text-sm text-steel">per month</p>
                 <ul className="mt-6 space-y-4 border-t border-slate-200 pt-6 text-sm leading-6 text-navy">
@@ -80,7 +99,7 @@ export function LeadRevivaPricingSection() {
                   variant={plan === "plus" ? "primary" : "secondary"}
                   className="mt-auto w-full !rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-royal"
                 >
-                  Get Started<span className="sr-only"> with {name}, {allowance} SMS, R{prices[allowance].toLocaleString("en-US")} per month</span>
+                  Get Started<span className="sr-only"> with {name}, {allowance} SMS, R{price.toLocaleString("en-US")} per month</span>
                 </ButtonLink>
               </article>
             );
@@ -110,8 +129,8 @@ export function LeadRevivaPricingSection() {
             <li><strong>Forwarded SMS (Plus):</strong> the message sent to your phone with the customer&apos;s enquiry.</li>
           </ul>
           <p className="mt-3">
-            Basic includes {allowance} recovery SMS segments per month. Plus includes {allowance} recovery,
-            {" "}{allowance} inbound and {allowance} forwarded SMS segments per month. Each Plus allowance
+            Basic includes {basicAllowance} recovery SMS segments per month. Plus includes {plusAllowance} recovery,
+            {" "}{plusAllowance} inbound and {plusAllowance} forwarded SMS segments per month. Each Plus allowance
             is separate, so a customer&apos;s reply uses inbound segments and forwarding it to your phone
             uses forwarded segments. Longer messages can use more than one segment in each allowance.
           </p>
