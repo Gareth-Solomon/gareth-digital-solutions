@@ -6,7 +6,7 @@ import { PackageEnquiryForm } from "@/features/packages/package-enquiry-form";
 import { siteConfig } from "@/config/site";
 
 const title = `Digital Service Packages | ${siteConfig.name}`;
-const description = "Explore Bronze — Get Found: a professional website and local online foundations for R3,999 once-off. See package details and enquire about your business.";
+const description = "Explore the Bronze Get Found package: a professional website and local online foundations for R3,999 once-off. See package details and enquire about your business.";
 export const metadata: Metadata = {
   title, description,
   alternates: { canonical: "https://garethdigitalsolutions.com/packages" },
@@ -55,7 +55,8 @@ export default async function PackagesPage({ searchParams }: { searchParams: Pro
               <article id="bronze" className="scroll-mt-28 overflow-hidden rounded-lg border-2 border-royal bg-white shadow-[0_20px_55px_rgba(7,20,51,0.1)]">
                 <div className="bg-navy p-6 text-white sm:p-8">
                   <p className="text-xs font-black uppercase tracking-[0.14em] text-skybrand">Available Now</p>
-                  <h3 className="mt-3 text-3xl font-black">Bronze — Get Found</h3>
+                  <p className="mt-3 text-xs font-black uppercase tracking-[0.14em] text-skybrand">BRONZE PACKAGE</p>
+                  <h3 className="mt-3 text-3xl font-black">Get Found</h3>
                   <p className="mt-5 text-4xl font-black">R3,999 <span className="text-base font-bold">once-off</span></p>
                   <p className="mt-2 text-sm font-bold text-skybrand">Launch Price</p>
                   <p className="mt-5 leading-7 text-blue-100">Get your business online and make it easy for customers to find and contact you.</p>
@@ -70,11 +71,12 @@ export default async function PackagesPage({ searchParams }: { searchParams: Pro
               </article>
               <div className="grid gap-6 md:grid-cols-2">
               {[
-                { slug: "silver", name: "Silver — Get Calls", copy: "For established local service businesses looking to attract more customer enquiries through ongoing local visibility improvements.", cta: "Enquire About Silver" },
-                { slug: "gold", name: "Gold — Get Booked", copy: "For businesses wanting to capture, follow up and convert more enquiries through smart automation.", cta: "Enquire About Gold" }
+                { slug: "silver", label: "SILVER PACKAGE", name: "Get Calls", copy: "For established local service businesses looking to attract more customer enquiries through ongoing local visibility improvements.", cta: "Enquire About Silver" },
+                { slug: "gold", label: "GOLD PACKAGE", name: "Get Booked", copy: "For businesses wanting to capture, follow up and convert more enquiries through smart automation.", cta: "Enquire About Gold" }
               ].map(pkg => (
                 <article key={pkg.slug} className="flex min-w-0 flex-col rounded-lg border border-slate-200 bg-white p-6 sm:p-8">
                   <p className="text-xs font-black uppercase tracking-[0.14em] text-steel">Coming Soon</p>
+                  <p className="mt-3 text-xs font-black uppercase tracking-[0.14em] text-royal">{pkg.label}</p>
                   <h3 className="mt-3 text-2xl font-black text-navy">{pkg.name}</h3>
                   <p className="mt-5 leading-7 text-steel">{pkg.copy}</p>
                   <div className="mt-auto pt-6">
@@ -98,7 +100,9 @@ export default async function PackagesPage({ searchParams }: { searchParams: Pro
 
         <section className="border-y border-slate-200 bg-mist py-16">
           <div className="section-shell">
-            <h2 className="text-3xl font-black text-navy sm:text-4xl">Bronze Package — Full Details</h2>
+            <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-royal">BRONZE PACKAGE</p>
+            <h2 className="text-3xl font-black text-navy sm:text-4xl">Get Found</h2>
+            <p className="mt-3 font-bold text-steel">Full Details</p>
             <div className="mt-8 grid items-start gap-6 lg:grid-cols-2">{details.map(detail => <article key={detail.title} className="rounded-lg border border-slate-200 bg-white p-6 sm:p-8"><h3 className="text-xl font-black text-navy">{detail.title}</h3>{detail.items.length > 0 && <ul className="mt-5 list-disc space-y-3 pl-5 text-base leading-7 text-steel">{detail.items.map(item => <li key={item}>{item}</li>)}</ul>}{detail.paragraphs.map(p => <p key={p} className="mt-5 text-base leading-7 text-steel">{p}</p>)}</article>)}</div>
           </div>
         </section>

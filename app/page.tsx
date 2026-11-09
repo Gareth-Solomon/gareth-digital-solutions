@@ -103,8 +103,8 @@ function BronzePackage() {
   return (
     <section id="bronze-package" className="scroll-mt-24 bg-white py-16">
       <div className="section-shell">
-        <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-royal">Featured package</p>
-        <h2 className="text-3xl font-black text-navy sm:text-4xl">Bronze — Get Found</h2>
+        <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-royal">BRONZE PACKAGE</p>
+        <h2 className="text-3xl font-black text-navy sm:text-4xl">Get Found</h2>
         <div className="mt-8 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-[0_20px_55px_rgba(7,20,51,0.08)] lg:grid lg:grid-cols-[0.9fr_1.1fr]">
           <div className="bg-[#001633] p-6 text-white sm:p-8">
             <span className="inline-flex rounded-full border border-skybrand/35 bg-white/5 px-3 py-1 text-xs font-black uppercase tracking-[0.12em] text-skybrand">Launch Price</span>

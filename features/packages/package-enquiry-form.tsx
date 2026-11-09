@@ -5,7 +5,7 @@ import { TextField } from "@/components/ui/text-field";
 import { useEnquirySubmission } from "@/features/enquiries/use-enquiry-submission";
 
 const defaults = { name: "", businessName: "", email: "", phone: "", website: "", requirements: "" };
-const packageNames = { bronze: "Bronze — Get Found Package", silver: "Silver — Get Calls Package", gold: "Gold — Get Booked Package" };
+const packageNames = { bronze: "Bronze Get Found package", silver: "Silver Get Calls package", gold: "Gold Get Booked package" };
 export type PackageTopic = keyof typeof packageNames;
 
 export function PackageEnquiryForm({ topic }: { topic: PackageTopic }) {
