@@ -1,6 +1,6 @@
 import { siteConfig } from "@/config/site";
 
-export function HeroSection() {
+export function HeroSection({ headline }: { headline?: string }) {
   return (
     <section id="home" className="relative overflow-hidden bg-white">
       <div className="absolute inset-y-0 right-0 hidden w-1/2 blue-grid opacity-80 lg:block" />
@@ -10,8 +10,11 @@ export function HeroSection() {
             INTRODUCING LEADREVIVA &mdash; MISSED CALL RECOVERY
           </p>
           <h1 className="max-w-3xl text-5xl font-black leading-[1.04] text-navy sm:text-6xl">
-            Stop Losing Customers From <span className="text-royal">Missed Calls</span>
+            {headline ?? <>Stop Losing Customers From <span className="text-royal">Missed Calls</span></>}
           </h1>
+          {headline ? (
+            <p className="mt-4 text-xl font-bold text-royal">Stop Losing Customers From Missed Calls</p>
+          ) : null}
           <p className="mt-6 max-w-2xl text-lg leading-8 text-steel">
             Every missed call could be a customer ready to buy. Our system helps you respond
             quickly, capture enquiries, and follow up before they move on to the next business.

@@ -6,7 +6,7 @@ const reassurancePoints = [
 
 export function ExistingNumberSection() {
   return (
-    <section className="border-y border-slate-200 bg-mist py-16">
+    <section className="bg-white py-16">
       <div className="section-shell">
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>

@@ -11,7 +11,7 @@ const benefits = [
   },
   {
     title: "Two-Way SMS",
-    copy: "Customers can reply by SMS and continue the conversation.",
+    copy: "With Plus, customers can reply by SMS and their enquiries are forwarded to your phone.",
     icon: "2W"
   },
   {
@@ -28,23 +28,23 @@ const benefits = [
 
 export function BenefitsSection() {
   return (
-    <section className="bg-[#001633] py-16 text-white">
+    <section className="border-y border-slate-200 bg-mist py-16 text-navy">
       <div className="section-shell">
         <div className="text-center">
           <h2 className="text-3xl font-black">Why Businesses Choose LeadReviva</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-blue-100">
+          <p className="mx-auto mt-3 max-w-2xl text-steel">
             Built for local service providers who need fast response, simple follow-up, and better
             visibility over missed opportunities.
           </p>
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {benefits.map((benefit) => (
-            <article key={benefit.title} className="border-l border-white/18 pl-6">
+            <article key={benefit.title} className="rounded-lg border border-slate-200 bg-white p-5 shadow-[0_18px_45px_rgba(7,20,51,0.08)]">
               <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-skybrand/60 text-sm font-black tracking-wide text-skybrand">
                 {benefit.icon}
               </div>
               <h3 className="font-black">{benefit.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-blue-100">{benefit.copy}</p>
+              <p className="mt-3 text-sm leading-6 text-steel">{benefit.copy}</p>
             </article>
           ))}
         </div>

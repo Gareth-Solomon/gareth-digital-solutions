@@ -13,8 +13,8 @@ const steps = [
   },
   {
     number: "3",
-    title: "Two-Way Conversation",
-    copy: "The customer can reply by SMS, allowing the conversation to continue even though the original call was missed.",
+    title: "Reply Forwarding (Plus)",
+    copy: "With Plus, the customer can reply by SMS and their enquiry is forwarded to your phone, allowing the conversation to continue after a missed call.",
     icon: "conversation"
   },
   {
