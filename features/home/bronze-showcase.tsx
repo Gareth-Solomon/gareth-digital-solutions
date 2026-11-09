@@ -78,12 +78,12 @@ export function BronzeShowcase() {
           <div className="section-shell">
             {index === 0 && (
               <div className="mb-10 max-w-3xl">
-                <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-royal">Illustrative examples</p>
+                <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-royal">START WITH GETTING FOUND</p>
                 <h2 id="bronze-showcase-heading" className="text-3xl font-black leading-tight text-navy sm:text-4xl">
                   See What Your Business Could Look Like Online
                 </h2>
                 <p className="mt-5 text-lg leading-8 text-steel">
-                  From a professional website to a stronger online presence, here&apos;s how we can help customers find and contact your business.
+                  Our Bronze package gives your business a professional website, Google Business Profile setup or optimisation, and the foundations to help customers find and contact you.
                 </p>
               </div>
             )}

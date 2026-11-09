@@ -21,10 +21,10 @@ export const metadata: Metadata = {
 };
 
 const customerJourney = [
-  { title: "Get Found", copy: "Help customers discover your business online." },
-  { title: "Generate Interest", copy: "Attract potential customers through advertising and local search." },
-  { title: "Capture the Enquiry", copy: "Make it easy for customers to contact you." },
-  { title: "Convert the Lead", copy: "Help turn enquiries into paying customers." }
+  { title: "Get Found", copy: "Help local customers discover your business online." },
+  { title: "Attract Customers", copy: "Reach people looking for the services you offer." },
+  { title: "Capture Enquiries", copy: "Make it easy for customers to call, message or request a quote." },
+  { title: "Win More Business", copy: "Follow up on enquiries so fewer opportunities are missed." }
 ];
 
 const bronzeHighlights = [
@@ -69,7 +69,8 @@ function BusinessHero() {
           <h1 className="max-w-3xl text-4xl font-black leading-[1.08] tracking-tight text-navy sm:text-5xl lg:text-6xl">
             Get Found. Get More Enquiries. <span className="text-royal">Grow Your Business.</span>
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-steel">{pageDescription}</p>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-steel">We help local service businesses get found online, attract more customers and make it easier for people to get in touch.</p>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-steel">From professional websites and Google visibility to advertising and automated follow-ups, we provide practical solutions to help your business grow.</p>
           <p className="mt-6 max-w-xl text-sm leading-6 text-steel">For plumbers, electricians, contractors, repair businesses and other local service providers.</p>
         </div>
       </div>
@@ -82,7 +83,8 @@ function CustomerJourney() {
     <section id="how-it-works" className="scroll-mt-24 border-y border-slate-200 bg-mist py-16">
       <div className="section-shell">
         <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-royal">From discovery to enquiry</p>
-        <h2 className="text-3xl font-black text-navy sm:text-4xl">How We Help Your Business</h2>
+        <h2 className="text-3xl font-black text-navy sm:text-4xl">From Being Found to Winning Customers</h2>
+        <p className="mt-5 max-w-3xl text-lg leading-8 text-steel">Different businesses need help at different stages. We offer practical solutions to help you get discovered, attract enquiries and turn opportunities into customers.</p>
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {customerJourney.map((step, index) => (
             <article key={step.title} className="rounded-lg border border-slate-200 bg-white p-6">
