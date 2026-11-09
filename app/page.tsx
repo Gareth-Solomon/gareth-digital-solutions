@@ -109,7 +109,7 @@ function BronzePackage() {
             <p className="mt-5 text-5xl font-black tracking-tight">R3,999</p>
             <p className="mt-2 text-sm text-blue-100">once-off</p>
             <p className="mt-6 max-w-md text-lg leading-8 text-blue-100">Get your business online and make it easy for customers to find and contact you.</p>
-            <ButtonLink href={siteConfig.calendarUrl} target="_blank" variant="light" className="mt-7 py-3 text-center">View Package Details</ButtonLink>
+            <ButtonLink href="/packages#bronze" variant="light" className="mt-7 py-3 text-center">View Package Details</ButtonLink>
             <p className="mt-3 text-xs leading-5 text-blue-100">Discuss the package with Gareth in a free consultation.</p>
           </div>
           <div className="p-6 sm:p-8">

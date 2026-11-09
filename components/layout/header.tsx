@@ -9,6 +9,7 @@ import { ButtonLink } from "@/components/ui/button-link";
 
 const navItems = [
   { label: "Home", href: "/#home" },
+  { label: "Packages", href: "/packages" },
   { label: "Free Tools", href: "/free-tools" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/#contact" }
@@ -139,6 +140,9 @@ export function Header() {
                   </div>
                 ))}
               </div>
+              <Link href="/packages" className={mobileNavLinkClass("/packages")}>
+                Packages
+              </Link>
               <Link href="/free-tools" className={mobileNavLinkClass("/free-tools")}>
                 Free Tools
               </Link>
