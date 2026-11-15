@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { ButtonLink } from "@/components/ui/button-link";
+import { BronzeGallery } from "@/features/packages/bronze-gallery";
 import { PackageEnquiryForm } from "@/features/packages/package-enquiry-form";
+import { bronzeFeatures } from "@/features/packages/bronze-features";
 import { siteConfig } from "@/config/site";
 
 const title = `Digital Service Packages | ${siteConfig.name}`;
@@ -12,13 +14,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://garethdigitalsolutions.com/packages" },
   openGraph: { title, description, url: "https://garethdigitalsolutions.com/packages", type: "website" }
 };
-const included = [
-  "Professional website: 1–3 page mobile-friendly website using a professional template.",
-  "Google Business Profile: Setup or optimisation of an existing eligible profile.",
-  "Local SEO foundations: Page titles, descriptions, relevant local keywords, sitemap, speed optimisation and Google Search Console setup.",
-  "Click-to-call button.", "WhatsApp contact button.", "Contact or quote request form.",
-  "Two rounds of revisions to the agreed design and content before launch."
-];
 const steps = [
   { title: "Tell Us About Your Business", copy: "Share what your business does, the services you offer and what you need help with." },
   { title: "We Build Your Online Presence", copy: "We confirm the project scope and get to work on your website and online foundations." },
@@ -29,8 +24,18 @@ const details = [
   { title: "Payment Terms", items: ["50% deposit: R1,999.50, payable before work begins.", "50% balance: R1,999.50, payable before the website goes live."], paragraphs: ["Payment is arranged after we have reviewed the enquiry and confirmed the agreed project scope."] },
   { title: "Optional Website Care Plan — R299/month", items: ["Website hosting.", "Security maintenance and backups.", "Up to 30 minutes of minor content edits per month, such as updating business hours, prices or photos.", "Support for website faults covered by the plan."], paragraphs: ["Unused editing time does not carry over to the following month.", "Major redesigns, additional pages and new functionality are quoted separately."] },
   { title: "Prefer to Manage Your Own Website?", items: [], paragraphs: ["After full payment, the customer receives the agreed website files and handover information so they can arrange their own hosting and maintenance.", "Ongoing support is not included after handover."] },
-  { title: "Additional Costs", items: [], paragraphs: ["Domain registration and renewal, as well as professional business email mailboxes, are billed separately.", "Costs will be confirmed before work begins."] },
-  { title: "Important Information", items: ["The website uses a professional template and includes a maximum of three pages.", "Additional pages, complex integrations, e-commerce and custom functionality are not included unless separately quoted.", "Customers own the agreed website deliverables after full payment, subject to third-party licensing.", "Google Business Profile eligibility and verification are controlled by Google.", "The business owner should retain ownership of their Google Business Profile.", "Foundational SEO is included, but ongoing SEO is not.", "Search rankings, customer enquiries and sales are not guaranteed.", "Monthly SEO reporting and ongoing optimisation are not included in Bronze."], paragraphs: [] }
+  { title: "Additional Costs", items: [], paragraphs: ["Domain registration and renewal, as well as professional business email mailboxes, are billed separately.", "Costs will be confirmed before work begins.", "Any required third-party subscriptions or premium services will be quoted separately and agreed upon before purchase."] },
+  {
+    title: "Important Information",
+    items: [
+      "Your website includes up to five pages using a professionally customised template.",
+      "Additional pages, advanced features and third-party integrations are quoted separately.",
+      "You own the agreed website deliverables after full payment, subject to any third-party licences.",
+      "Google controls Business Profile eligibility, verification and feature availability. Your business retains ownership of its Google Business Profile.",
+      "Bronze includes initial local SEO foundations, not ongoing SEO management, monthly reporting or guaranteed search rankings, enquiries or sales."
+    ],
+    paragraphs: []
+  }
 ];
 
 export default async function PackagesPage({ searchParams }: { searchParams: Promise<{ package?: string | string[] }> }) {
@@ -63,10 +68,10 @@ export default async function PackagesPage({ searchParams }: { searchParams: Pro
                 </div>
                 <div className="p-6 sm:p-8">
                   <h4 className="text-lg font-black text-navy">What&apos;s Included</h4>
-                  <ul className="mt-4 space-y-3 text-sm leading-6 text-steel">{included.map(item => <li key={item} className="flex gap-3"><span aria-hidden="true" className="font-bold text-royal">✓</span><span>{item}</span></li>)}</ul>
+                  <ul className="mt-4 space-y-3 text-sm leading-6 text-steel">{bronzeFeatures.map(item => <li key={item} className="flex gap-3"><span aria-hidden="true" className="font-bold text-royal">✓</span><span>{item}</span></li>)}</ul>
                   <p className="mt-6 rounded-md bg-mist p-4 text-sm font-bold leading-6 text-navy">Optional Website Care Plan — R299/month</p>
-                  <ButtonLink href="/packages#package-enquiry" className="mt-6 w-full">Get Started with Bronze</ButtonLink>
-                  <p className="mt-3 text-center text-xs leading-6 text-steel">No payment required to enquire.</p>
+                  <ButtonLink href="/packages#package-enquiry" className="mt-6 w-full">Enquire About Bronze</ButtonLink>
+                  <p className="mt-3 text-center text-xs leading-6 text-steel">No payment or commitment required.</p>
                 </div>
               </article>
               <div className="grid gap-6 md:grid-cols-2">
@@ -90,6 +95,8 @@ export default async function PackagesPage({ searchParams }: { searchParams: Pro
           </div>
         </section>
 
+        <BronzeGallery />
+
         <section className="bg-white py-16">
           <div className="section-shell">
             <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-royal">The Bronze package process</p>
@@ -110,7 +117,7 @@ export default async function PackagesPage({ searchParams }: { searchParams: Pro
         <section id="package-enquiry" aria-labelledby="package-enquiry-heading" className="scroll-mt-28 bg-white py-16">
           <div className="section-shell">
             <div className="mx-auto max-w-3xl rounded-lg border border-slate-200 bg-white p-6 shadow-[0_20px_55px_rgba(7,20,51,0.08)] sm:p-8">
-              <h2 id="package-enquiry-heading" className="mb-6 text-3xl font-black text-navy">{topic === "bronze" ? "Get Started with Bronze" : `Enquire About ${topic === "silver" ? "Silver" : "Gold"}`}</h2>
+              <h2 id="package-enquiry-heading" className="mb-6 text-3xl font-black text-navy">{topic === "bronze" ? "Enquire About Get Found" : `Enquire About ${topic === "silver" ? "Silver" : "Gold"}`}</h2>
               <PackageEnquiryForm key={topic} topic={topic} />
             </div>
           </div>

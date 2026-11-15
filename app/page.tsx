@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { ButtonLink } from "@/components/ui/button-link";
+import { bronzeFeatures } from "@/features/packages/bronze-features";
 import { siteConfig } from "@/config/site";
 import { BronzeShowcase } from "@/features/home/bronze-showcase";
 
@@ -27,14 +28,6 @@ const customerJourney = [
   { title: "Win More Business", copy: "Follow up on enquiries so fewer opportunities are missed." }
 ];
 
-const bronzeHighlights = [
-  "Professional 1–3 page mobile-friendly website",
-  "Google Business Profile setup or optimisation",
-  "Local SEO foundations",
-  "Click-to-call and WhatsApp buttons",
-  "Contact or quote request form",
-  "Two rounds of revisions"
-];
 
 const reasons = [
   { title: "Built around local businesses", copy: "Solutions designed for plumbers, electricians, contractors, repair businesses and other local service providers." },
@@ -117,7 +110,7 @@ function BronzePackage() {
           <div className="p-6 sm:p-8">
             <h3 className="text-xl font-black text-navy">A practical foundation for your business</h3>
             <ul className="mt-5 space-y-4 text-sm leading-6 text-navy">
-              {bronzeHighlights.map((item) => <li key={item} className="flex gap-3"><span aria-hidden="true" className="font-black text-royal">✓</span>{item}</li>)}
+              {bronzeFeatures.map((item) => <li key={item} className="flex gap-3"><span aria-hidden="true" className="font-black text-royal">✓</span><span>{item}</span></li>)}
             </ul>
             <p className="mt-6 rounded-md bg-mist p-4 text-sm leading-6 text-navy"><strong>Optional Website Care Plan:</strong> R299/month.</p>
           </div>
