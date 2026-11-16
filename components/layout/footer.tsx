@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site";
 export function Footer() {
   return (
     <footer id="contact" className="bg-[#001633] text-white">
-      <div className="section-shell grid gap-10 py-12 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div className="section-shell grid grid-cols-1 items-start gap-8 py-12 md:grid-cols-3">
         <div>
           <Image
             src="/images/gareth-digital-logo.png"
@@ -19,7 +19,7 @@ export function Footer() {
             follow-up systems.
           </p>
           <p className="mt-5 text-sm font-bold text-skybrand">{siteConfig.tagline}</p>
-          <div className="mt-5 flex items-center gap-3">
+          <div className="mt-5 flex flex-wrap items-center gap-3">
             <a
               href="https://www.youtube.com/channel/UC5wg1ek-UkXQOvp_LPTQmmg"
               target="_blank"
@@ -102,7 +102,7 @@ export function Footer() {
             Contact
           </h3>
           <div className="grid gap-2 text-sm text-blue-100">
-            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+            <a href={`mailto:${siteConfig.email}`} className="[overflow-wrap:anywhere]">{siteConfig.email}</a>
             <a href={siteConfig.phoneHref} aria-label={`Call Gareth on ${siteConfig.phoneDisplay}`}>
               Call Gareth: {siteConfig.phoneDisplay}
             </a>
@@ -110,8 +110,10 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t border-white/10 py-4 text-center text-xs text-blue-200">
-        © 2026 {siteConfig.name}. All rights reserved.
+      <div className="border-t border-white/10">
+        <div className="section-shell py-4 text-center text-xs text-blue-200">
+          © 2026 {siteConfig.name}. All rights reserved.
+        </div>
       </div>
     </footer>
   );
