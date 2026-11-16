@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { siteConfig } from "@/config/site";
+import { mainNavigation, siteConfig } from "@/config/site";
 
 export function Footer() {
   return (
@@ -91,10 +91,9 @@ export function Footer() {
             Quick Links
           </h3>
           <div className="grid gap-2 text-sm text-blue-100">
-            <Link href="/#home">Home</Link>
-            <Link href="/services">Services</Link>
-            <Link href="/free-tools">Free Tools</Link>
-            <Link href="/#contact">Contact</Link>
+            {mainNavigation.map(({ label, href }) => (
+              <Link key={href} href={href}>{label}</Link>
+            ))}
           </div>
         </div>
         <div>

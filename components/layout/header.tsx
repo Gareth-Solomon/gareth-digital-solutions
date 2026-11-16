@@ -3,17 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { siteConfig } from "@/config/site";
+import { mainNavigation, siteConfig } from "@/config/site";
 import { serviceCategories } from "@/config/services";
 import { ButtonLink } from "@/components/ui/button-link";
 
-const navItems = [
-  { label: "Home", href: "/#home" },
-  { label: "Packages", href: "/packages" },
-  { label: "Free Tools", href: "/free-tools" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/#contact" }
-];
+const [homeLink, servicesLink, ...remainingLinks] = mainNavigation;
 
 export function Header() {
   const pathname = usePathname();
@@ -54,15 +48,15 @@ export function Header() {
           />
         </Link>
         <nav className="hidden items-center gap-7 text-sm font-semibold text-navy lg:flex">
-          <Link href="/#home" className={navLinkClass("/#home")}>
-            Home
+          <Link href={homeLink.href} className={navLinkClass(homeLink.href)}>
+            {homeLink.label}
           </Link>
           <div className="group relative">
             <Link
-              href="/services"
-              className={`inline-flex items-center gap-1 ${navLinkClass("/services")}`}
+              href={servicesLink.href}
+              className={`inline-flex items-center gap-1 ${navLinkClass(servicesLink.href)}`}
             >
-              Services
+              {servicesLink.label}
               <svg
                 aria-hidden="true"
                 viewBox="0 0 20 20"
@@ -95,7 +89,7 @@ export function Header() {
               </div>
             </div>
           </div>
-          {navItems.slice(1).map((item) => (
+          {remainingLinks.map((item) => (
             <Link key={item.href} href={item.href} className={navLinkClass(item.href)}>
               {item.label}
             </Link>
@@ -114,11 +108,11 @@ export function Header() {
           </summary>
           <div className="absolute right-0 top-full mt-3 max-h-[calc(100vh-96px)] w-[min(86vw,360px)] overflow-y-auto rounded-lg border border-slate-200 bg-white p-4 shadow-[0_22px_55px_rgba(7,20,51,0.18)]">
             <div className="grid gap-2 text-sm font-bold text-navy">
-              <Link href="/#home" className={mobileNavLinkClass("/#home")}>
-                Home
+              <Link href={homeLink.href} className={mobileNavLinkClass(homeLink.href)}>
+                {homeLink.label}
               </Link>
-              <Link href="/services" className={mobileNavLinkClass("/services")}>
-                Services
+              <Link href={servicesLink.href} className={mobileNavLinkClass(servicesLink.href)}>
+                {servicesLink.label}
               </Link>
               <div className="grid gap-4 border-y border-slate-200 py-4">
                 {serviceCategories.map((category) => (
@@ -140,18 +134,11 @@ export function Header() {
                   </div>
                 ))}
               </div>
-              <Link href="/packages" className={mobileNavLinkClass("/packages")}>
-                Packages
-              </Link>
-              <Link href="/free-tools" className={mobileNavLinkClass("/free-tools")}>
-                Free Tools
-              </Link>
-              <Link href="/about" className={mobileNavLinkClass("/about")}>
-                About
-              </Link>
-              <Link href="/#contact" className={mobileNavLinkClass("/#contact")}>
-                Contact
-              </Link>
+              {remainingLinks.map((item) => (
+                <Link key={item.href} href={item.href} className={mobileNavLinkClass(item.href)}>
+                  {item.label}
+                </Link>
+              ))}
             </div>
           </div>
         </details>

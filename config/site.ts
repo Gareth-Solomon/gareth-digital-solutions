@@ -12,3 +12,12 @@ export const siteConfig = {
     process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_URL ??
     "https://calendar.app.google/aASiHtibd29MswdU8"
 } as const;
+
+export const mainNavigation = [
+  { label: "Home", href: "/#home" },
+  { label: "Services", href: "/services" },
+  { label: "Packages", href: "/packages" },
+  { label: "Free Tools", href: "/free-tools" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/#contact" }
+] as const;
