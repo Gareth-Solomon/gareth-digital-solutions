@@ -86,7 +86,7 @@ export function Footer() {
             </a>
           </div>
         </div>
-        <div>
+        <div className="text-left md:justify-self-center">
           <h3 className="mb-4 text-sm font-bold uppercase tracking-wide text-skybrand">
             Quick Links
           </h3>
