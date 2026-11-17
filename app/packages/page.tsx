@@ -19,7 +19,27 @@ const steps = [
   { title: "We Build Your Online Presence", copy: "We confirm the project scope and get to work on your website and online foundations." },
   { title: "Review and Launch", copy: "Review your website, request any agreed revisions and approve it before launch." }
 ];
-const details = [
+const details: { id?: string; title: string; intro?: string; items: string[]; paragraphs?: string[] }[] = [
+  {
+    id: "bronze-delivery-timeframe",
+    title: "Website Preview Within 7 Working Days",
+    intro: "Your website will be ready for review within 7 working days after we receive your deposit and all the required information and content.",
+    items: [
+      "Working days exclude weekends and South African public holidays.",
+      "The timeframe covers the website preview for your review. Feedback, revisions and final approval may extend the launch date.",
+      "The timeframe excludes Google Business Profile verification, other third-party approvals and delays caused by incomplete or late information from you."
+    ]
+  },
+  {
+    id: "bronze-delivery-guarantee",
+    title: "Our Delivery Guarantee",
+    intro: "If we're unable to deliver the agreed work within our control, and cannot put things right within a reasonable opportunity to do so, we'll refund the amount you've paid for the undelivered work, subject to our guarantee terms and your statutory rights.",
+    items: [
+      "A change of mind or a preference about a design that meets the agreed scope does not by itself qualify for a refund under this guarantee.",
+      "The guarantee does not cover Google rankings, leads, sales, Google Business Profile verification or other third-party approvals.",
+      "Your applicable South African statutory consumer rights are unaffected."
+    ]
+  },
   { title: "What We Need From You", items: ["Business logo, if available.", "Photos of your work.", "List of services offered.", "Areas your business serves.", "Feedback within three working days of each review request."], paragraphs: ["Delays in supplying information or feedback may affect the launch date."] },
   { title: "Payment Terms", items: ["50% deposit: R1,999.50, payable before work begins.", "50% balance: R1,999.50, payable before the website goes live."], paragraphs: ["Payment is arranged after we have reviewed the enquiry and confirmed the agreed project scope."] },
   { title: "Optional Website Care Plan — R299/month", items: ["Website hosting.", "Security maintenance and backups.", "Up to 30 minutes of minor content edits per month, such as updating business hours, prices or photos.", "Support for website faults covered by the plan."], paragraphs: ["Unused editing time does not carry over to the following month.", "Major redesigns, additional pages and new functionality are quoted separately."] },
@@ -35,6 +55,21 @@ const details = [
       "Bronze includes initial local SEO foundations, not ongoing SEO management, monthly reporting or guaranteed search rankings, enquiries or sales."
     ],
     paragraphs: []
+  }
+];
+
+const bronzeFaqs = [
+  {
+    question: "How long does it take to build my website?",
+    answer: "We aim to have your website ready for review within 7 working days after receiving your deposit and all the information and content we need. Revisions, customer approvals and third-party processes may affect the final launch date."
+  },
+  {
+    question: "What happens if GDS cannot deliver what was agreed?",
+    answer: "We'll first work with you to resolve the issue. If we're unable to deliver agreed work within our control after a reasonable opportunity to put things right, we'll refund the amount paid for the undelivered work, subject to our guarantee terms and your statutory rights."
+  },
+  {
+    question: "Does the 7-day timeframe include Google Business Profile verification?",
+    answer: "No. Google controls its own verification and approval process, so we cannot guarantee when verification will be completed."
   }
 ];
 
@@ -69,6 +104,19 @@ export default async function PackagesPage({ searchParams }: { searchParams: Pro
                 <div className="p-6 sm:p-8">
                   <h4 className="text-lg font-black text-navy">What&apos;s Included</h4>
                   <ul className="mt-4 space-y-3 text-sm leading-6 text-steel">{bronzeFeatures.map(item => <li key={item} className="flex gap-3"><span aria-hidden="true" className="font-bold text-royal">✓</span><span>{item}</span></li>)}</ul>
+                  <ul className="mt-5 space-y-2 border-t border-slate-200 pt-4 text-sm font-bold leading-6 text-navy">
+                    <li className="flex gap-3">
+                      <span aria-hidden="true" className="text-royal">✓</span>
+                      <div>
+                        <a href="#bronze-delivery-timeframe" className="underline underline-offset-2">Website Preview Within 7 Working Days</a>
+                        <p className="text-xs font-normal text-steel">After we receive your deposit and all required information and content.</p>
+                      </div>
+                    </li>
+                    <li className="flex gap-3">
+                      <span aria-hidden="true" className="text-royal">✓</span>
+                      <a href="#bronze-delivery-guarantee" className="underline underline-offset-2">Our Delivery Guarantee</a>
+                    </li>
+                  </ul>
                   <p className="mt-6 rounded-md bg-mist p-4 text-sm font-bold leading-6 text-navy">Optional Website Care Plan — R299/month</p>
                   <ButtonLink href="/packages#package-enquiry" className="mt-6 w-full">Enquire About Bronze</ButtonLink>
                   <p className="mt-3 text-center text-xs leading-6 text-steel">No payment or commitment required.</p>
@@ -110,7 +158,38 @@ export default async function PackagesPage({ searchParams }: { searchParams: Pro
             <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-royal">BRONZE PACKAGE</p>
             <h2 className="text-3xl font-black text-navy sm:text-4xl">Get Found</h2>
             <p className="mt-3 font-bold text-steel">Full Details</p>
-            <div className="mt-8 grid items-start gap-6 lg:grid-cols-2">{details.map(detail => <article key={detail.title} className="rounded-lg border border-slate-200 bg-white p-6 sm:p-8"><h3 className="text-xl font-black text-navy">{detail.title}</h3>{detail.items.length > 0 && <ul className="mt-5 list-disc space-y-3 pl-5 text-base leading-7 text-steel">{detail.items.map(item => <li key={item}>{item}</li>)}</ul>}{detail.paragraphs.map(p => <p key={p} className="mt-5 text-base leading-7 text-steel">{p}</p>)}</article>)}</div>
+            <div className="mt-8 grid items-start gap-6 lg:grid-cols-2">
+              {details.map((detail) => (
+                <article key={detail.title} id={detail.id} className="scroll-mt-28 rounded-lg border border-slate-200 bg-white p-6 sm:p-8">
+                  <h3 className="text-xl font-black text-navy">{detail.title}</h3>
+                  {detail.intro && <p className="mt-5 text-base leading-7 text-steel">{detail.intro}</p>}
+                  {detail.items.length > 0 && (
+                    <ul className="mt-5 list-disc space-y-3 pl-5 text-base leading-7 text-steel">
+                      {detail.items.map((item) => <li key={item}>{item}</li>)}
+                    </ul>
+                  )}
+                  {detail.paragraphs?.map((paragraph) => (
+                    <p key={paragraph} className="mt-5 text-base leading-7 text-steel">{paragraph}</p>
+                  ))}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="bronze-faq-heading" className="border-b border-slate-200 bg-white py-16">
+          <div className="section-shell">
+            <h2 id="bronze-faq-heading" className="text-3xl font-black text-navy sm:text-4xl">Bronze Package FAQs</h2>
+            <div className="mt-8 grid max-w-3xl gap-4">
+              {bronzeFaqs.map(({ question, answer }) => (
+                <details key={question} className="rounded-lg border border-slate-200 bg-white p-5">
+                  <summary className="cursor-pointer font-bold text-navy focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-royal">
+                    {question}
+                  </summary>
+                  <p className="mt-3 leading-7 text-steel">{answer}</p>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
 
