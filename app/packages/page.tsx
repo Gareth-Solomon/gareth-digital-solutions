@@ -120,6 +120,9 @@ export default async function PackagesPage({ searchParams }: { searchParams: Pro
                   <p className="mt-6 rounded-md bg-mist p-4 text-sm font-bold leading-6 text-navy">Optional Website Care Plan — R299/month</p>
                   <ButtonLink href="/packages#package-enquiry" className="mt-6 w-full">Enquire About Bronze</ButtonLink>
                   <p className="mt-3 text-center text-xs leading-6 text-steel">No payment or commitment required.</p>
+                  <p className="mt-2 text-center text-sm leading-6 text-steel">
+                    Have a question about this package? Get in touch — we&apos;re happy to help.
+                  </p>
                 </div>
               </article>
               <div className="grid gap-6 md:grid-cols-2">
