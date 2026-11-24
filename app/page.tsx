@@ -63,8 +63,7 @@ function BusinessHero() {
           <h1 className="max-w-3xl text-4xl font-black leading-[1.08] tracking-tight text-navy sm:text-5xl lg:text-6xl">
             Get Found. Get More Enquiries. <span className="text-royal">Grow Your Business.</span>
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-steel">We help local service businesses get found online, attract more customers and make it easier for people to get in touch.</p>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-steel">From professional websites and Google visibility to advertising and automated follow-ups, we provide practical solutions to help your business grow.</p>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-steel">We help local service businesses get found online, attract more customers, and make it easier for people to get in touch through professional websites, improved Google visibility, customer reviews, and convenient contact options.</p>
           <p className="mt-6 max-w-xl text-sm leading-6 text-steel">For plumbers, electricians, contractors, repair businesses and other local service providers.</p>
           <Image
             src="/images/bronze-showcase/pinecrest-plumbing-responsive-website.webp"
