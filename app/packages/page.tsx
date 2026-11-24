@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -85,6 +86,14 @@ export default async function PackagesPage({ searchParams }: { searchParams: Pro
             <p className="mb-4 text-sm font-black uppercase tracking-[0.16em] text-royal">Packages</p>
             <h1 className="max-w-4xl text-4xl font-black leading-tight text-navy sm:text-5xl lg:text-6xl">Simple Packages to Help Your Business Grow</h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-steel">Whether you&apos;re getting online for the first time or improving your digital presence, we&apos;ll help you take the next step.</p>
+            <Image
+              src="/images/bronze-showcase/pinecrest-plumbing-digital-showcase.webp"
+              alt="Illustrative Pinecrest Plumbing demonstration website shown on desktop, laptop, tablet and mobile screens."
+              width={1671}
+              height={941}
+              sizes="(min-width: 928px) 896px, calc(100vw - 32px)"
+              className="mt-8 h-auto w-full max-w-4xl rounded-xl border border-slate-200"
+            />
           </div>
         </section>
 
