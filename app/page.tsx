@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -65,6 +66,14 @@ function BusinessHero() {
           <p className="mt-6 max-w-2xl text-lg leading-8 text-steel">We help local service businesses get found online, attract more customers and make it easier for people to get in touch.</p>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-steel">From professional websites and Google visibility to advertising and automated follow-ups, we provide practical solutions to help your business grow.</p>
           <p className="mt-6 max-w-xl text-sm leading-6 text-steel">For plumbers, electricians, contractors, repair businesses and other local service providers.</p>
+          <Image
+            src="/images/bronze-showcase/pinecrest-plumbing-responsive-website.webp"
+            alt="Illustrative Pinecrest Plumbing website shown on desktop, laptop, tablet and mobile screens."
+            width={1671}
+            height={941}
+            sizes="(min-width: 928px) 896px, calc(100vw - 32px)"
+            className="mt-8 h-auto w-full rounded-xl border border-slate-200"
+          />
         </div>
       </div>
     </section>
