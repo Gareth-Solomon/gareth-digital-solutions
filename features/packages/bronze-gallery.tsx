@@ -43,7 +43,7 @@ export function BronzeGallery() {
           Pinecrest Plumbing is a fictional demonstration business. These examples do not depict client work or guarantee reviews, Google verification, search placement or enquiries.
         </p>
 
-        <div className="mt-6 grid gap-5 md:grid-cols-2">
+        <div className="relative left-1/2 mt-6 grid w-[min(1280px,calc(100vw-32px))] -translate-x-1/2 gap-5 md:grid-cols-2">
           {examples.map((example) => (
             <figure key={example.image} className="min-w-0 overflow-hidden rounded-lg border border-slate-200 bg-white">
               <Image
@@ -51,7 +51,7 @@ export function BronzeGallery() {
                 alt={example.alt}
                 width={1536}
                 height={1024}
-                sizes="(min-width: 1212px) 578px, (min-width: 768px) calc((100vw - 56px) / 2), calc(100vw - 34px)"
+                sizes="(min-width: 1312px) 628px, (min-width: 768px) calc((100vw - 56px) / 2), calc(100vw - 34px)"
                 className="h-auto w-full border-b border-slate-200"
               />
               <figcaption className="p-4">
