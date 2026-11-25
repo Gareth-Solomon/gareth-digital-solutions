@@ -68,7 +68,7 @@ function BusinessHero() {
           <Image
             src="/images/bronze-showcase/pinecrest-plumbing-responsive-website.webp"
             alt="Illustrative Pinecrest Plumbing website shown on desktop, laptop, tablet and mobile screens."
-            width={1671}
+            width={1670}
             height={941}
             sizes="(min-width: 928px) 896px, calc(100vw - 32px)"
             className="mt-8 h-auto w-full rounded-xl border border-slate-200"
