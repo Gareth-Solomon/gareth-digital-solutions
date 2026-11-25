@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ButtonLink } from "@/components/ui/button-link";
 
 const examples = [
   {
@@ -68,6 +69,9 @@ export function BronzeGallery() {
               </figcaption>
             </figure>
           ))}
+        </div>
+        <div className="mt-8 text-center">
+          <ButtonLink href="/packages#package-enquiry" className="w-full sm:w-auto">Enquire About Bronze</ButtonLink>
         </div>
       </div>
     </section>
